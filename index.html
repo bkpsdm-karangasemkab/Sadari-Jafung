@@ -44,8 +44,7 @@
             padding: 0 !important;
             width: 100% !important;
             min-height: 100% !important;
-            min-height: 100dvh !important;
-            overflow-x: clip !important;
+            overflow-x: hidden !important;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #030712;
             color: #f1f5f9;
@@ -66,19 +65,7 @@
 
         #sadari-header-spacer { width:100%; height:76px; flex:0 0 auto; }
         #sadari-fixed-header *, #sadari-search-strip *, #sadari-live-announcement * { box-sizing:border-box; }
-        @media(max-width:640px){
-            #sadari-fixed-header{padding-top:8px !important;padding-bottom:8px !important;}
-            .bg-karangasem-hero{background-attachment:scroll !important;}
-            /* Reduce GPU work on phones while retaining the visual theme. */
-            .glass-panel,.glass-card{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-            .glass-card:hover{transform:none;box-shadow:none;}
-            .group:hover img{transform:none;}
-        }
-        /* Embedded in Blogger: let the application own its viewport and scrolling. */
-        @media (max-width: 768px) {
-            html, body { overscroll-behavior-y: contain; }
-            button, a { -webkit-tap-highlight-color: transparent; }
-        }
+        @media(max-width:640px){ #sadari-fixed-header{padding-top:8px !important;padding-bottom:8px !important;} .bg-karangasem-hero{background-attachment:scroll !important;} }
         /* Responsive Background Image Layer */
         .bg-karangasem-hero {
             background-color: #030712;
