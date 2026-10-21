@@ -240,22 +240,22 @@
                         <div class="min-w-0 flex-1">
                           <div class="flex items-center justify-between gap-2 mb-1.5">
                             <div class="flex items-center gap-1.5">
-                                <span class="px-2 py-0.5 rounded text-[9px] font-extrabold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1">
-                                  <i class="fa-brands fa-google text-[10px]"></i> GOOGLE NEWS
+                                <span class="px-2 py-0.5 rounded text-[9px] font-extrabold uppercase tracking-wider bg-blue-600/30 text-cyan-300 border border-cyan-500/40 flex items-center gap-1">
+                                  <i class="fa-solid fa-building-columns text-[10px]"></i> BKN OFFICIAL NEWS
                                 </span>
-                                <span class="text-[10px] font-bold text-amber-300 hidden sm:inline">Informasi Terkini Jabatan Fungsional (Pusat & Daerah)</span>
+                                <span class="text-[10px] font-bold text-amber-300 hidden sm:inline">Informasi Resmi Badan Kepegawaian Negara (bkn.go.id)</span>
                             </div>
                             <!-- Refresh Button -->
-                            <button type="button" onclick="manualRefreshNews()" id="refresh-news-btn" title="Refresh Informasi Google News" class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-300 hover:text-white bg-amber-500/20 hover:bg-amber-500/40 px-2 py-0.5 rounded-lg border border-amber-500/40 transition">
+                            <button type="button" onclick="manualRefreshNews()" id="refresh-news-btn" title="Refresh Informasi BKN" class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-300 hover:text-white bg-amber-500/20 hover:bg-amber-500/40 px-2 py-0.5 rounded-lg border border-amber-500/40 transition">
                               <i id="refresh-news-icon" class="fa-solid fa-arrows-rotate text-[10px]"></i>
                               <span>Update</span>
                             </button>
                           </div>
-                          <p id="sadari-live-title" class="text-xs sm:text-sm font-bold text-white leading-snug line-clamp-2">Memuat berita terbaru Jabatan Fungsional dari news.google.com...</p>
+                          <p id="sadari-live-title" class="text-xs sm:text-sm font-bold text-white leading-snug line-clamp-2">Memuat berita & kebijakan Jabatan Fungsional terbaru dari www.bkn.go.id...</p>
                           <div class="flex items-center justify-between gap-2 mt-2 pt-1 border-t border-slate-800/80">
-                            <p id="sadari-live-meta" class="text-[10px] text-slate-400 truncate">Sistem Otomatis Sinkronisasi Google News • news.google.com</p>
-                            <a id="sadari-live-direct-link" href="https://news.google.com" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold text-amber-300 hover:text-amber-100 transition">
-                                <span>Buka news.google.com</span> <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            <p id="sadari-live-meta" class="text-[10px] text-slate-400 truncate">Sistem Otomatis Sinkronisasi BKN News Feed • www.bkn.go.id</p>
+                            <a id="sadari-live-direct-link" href="https://www.bkn.go.id/" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold text-amber-300 hover:text-amber-100 transition">
+                                <span>Buka bkn.go.id</span> <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                             </a>
                           </div>
                         </div>
@@ -425,7 +425,7 @@
         </div>
     </div>
 
-    <!-- 2. ANNOUNCEMENTS / PENGUMUMAN MODAL (GOOGLE NEWS DRIVEN) -->
+    <!-- 2. ANNOUNCEMENTS / PENGUMUMAN MODAL (BKN DRIVEN) -->
     <div id="announcements-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
         <div class="w-full max-w-4xl bg-slate-900 border border-amber-500/40 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <!-- Modal Header -->
@@ -436,9 +436,9 @@
                     </div>
                     <div>
                         <h3 class="font-orbitron font-bold text-lg text-white flex items-center gap-2">
-                            Pengumuman & <span class="gold-gradient-text">Google News</span>
+                            Pengumuman & <span class="gold-gradient-text">BKN News Official</span>
                         </h3>
-                        <p class="text-xs text-slate-400">Pusat Berita Terupdate & Kebijakan Jabatan Fungsional dari news.google.com</p>
+                        <p class="text-xs text-slate-400">Pusat Berita Terupdate & Kebijakan Jabatan Fungsional dari www.bkn.go.id</p>
                     </div>
                 </div>
                 <button onclick="closeModal('announcements-modal')" class="p-2 text-slate-400 hover:text-rose-400 transition rounded-xl">
@@ -452,8 +452,8 @@
                 <div class="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar text-xs">
                         <button onclick="filterAnnouncements('all', this)" class="ann-tab-btn active px-3.5 py-1.5 rounded-full bg-amber-500 text-slate-950 font-bold">Semua Berita</button>
-                        <button onclick="filterAnnouncements('kebijakan', this)" class="ann-tab-btn px-3.5 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700">Kebijakan & Regulasi</button>
-                        <button onclick="filterAnnouncements('daerah', this)" class="ann-tab-btn px-3.5 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700">Info Daerah (Karangasem/Bali)</button>
+                        <button onclick="filterAnnouncements('kebijakan', this)" class="ann-tab-btn px-3.5 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700">Kebijakan & Regulasi Jafung</button>
+                        <button onclick="filterAnnouncements('daerah', this)" class="ann-tab-btn px-3.5 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700">Kepegawaian & Inpassing</button>
                     </div>
                     <button onclick="manualRefreshNews()" class="shrink-0 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-bold border border-amber-500/40 transition flex items-center gap-1.5">
                         <i class="fa-solid fa-arrows-rotate text-xs"></i> <span class="hidden sm:inline">Update Feed</span>
@@ -462,16 +462,16 @@
 
                 <!-- Dynamic News Feed List -->
                 <div id="announcements-feed-list" class="space-y-4">
-                    <!-- Dynamic Items rendered by JS from news.google.com -->
+                    <!-- Dynamic Items rendered by JS from bkn.go.id -->
                 </div>
             </div>
 
             <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
                 <span class="flex items-center gap-1.5 text-[11px] text-slate-400">
-                    <i class="fa-brands fa-google text-amber-400"></i> Sumber Informasi resmi dihimpun secara otomatis dari <strong class="text-amber-300">news.google.com</strong>.
+                    <i class="fa-solid fa-building-columns text-cyan-400"></i> Sumber Informasi resmi dihimpun secara otomatis dari <strong class="text-amber-300">www.bkn.go.id</strong>.
                 </span>
-                <a href="https://news.google.com" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-semibold text-[11px]">
-                    Kunjungi news.google.com <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i>
+                <a href="https://www.bkn.go.id/" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-semibold text-[11px]">
+                    Kunjungi www.bkn.go.id <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i>
                 </a>
             </div>
         </div>
@@ -656,7 +656,7 @@
         };
 
         window.manualRefreshNews = function() {
-            window.showToast('Memperbarui Berita Terkini dari Google News (news.google.com)...');
+            window.showToast('Memperbarui Berita Terkini langsung dari Badan Kepegawaian Negara (www.bkn.go.id)...');
             refreshSadariFunctionalNews();
         };
 
@@ -784,11 +784,11 @@
             if (sadariLiveNews.length > 0) {
                 const first = sadariLiveNews[0];
                 titleEl.textContent = first.title;
-                metaEl.textContent = `Sumber: ${first.publisher} • Rilis: ${first.date} • Dipublikasikan via news.google.com`;
+                metaEl.textContent = `Sumber: ${first.publisher} • Tanggal: ${first.date} • Dipublikasikan via www.bkn.go.id`;
                 if (linkEl) linkEl.href = first.url;
             } else {
-                titleEl.textContent = 'Memuat berita & informasi Jabatan Fungsional secara otomatis dari news.google.com...';
-                metaEl.textContent = 'Menghubungkan ke layanan Google News RSS...';
+                titleEl.textContent = 'Memuat berita & informasi Jabatan Fungsional secara otomatis dari www.bkn.go.id...';
+                metaEl.textContent = 'Menghubungkan ke portal resmi Badan Kepegawaian Negara...';
             }
         }
 
@@ -796,10 +796,9 @@
             const refreshIcon = document.getElementById('refresh-news-icon');
             if (refreshIcon) refreshIcon.classList.add('fa-spin');
 
-            // Query pencarian Google News yang relevan dengan Jabatan Fungsional
-            const searchQuery = '("jabatan fungsional" OR "angka kredit" OR "inpassing" OR "SOP kepegawaian") AND ("BKN" OR "MenPAN" OR "Bali" OR "Karangasem")';
-            const googleNewsRss = 'https://news.google.com/rss/search?q=' + encodeURIComponent(searchQuery) + '&hl=id&gl=ID&ceid=ID:id';
-            const endpoint = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(googleNewsRss);
+            // Pengambilan RSS/News Feed terpusat BKN dengan pencarian kata kunci Jabatan Fungsional & link spesifik
+            const bknSearchRss = 'https://news.google.com/rss/search?q=site:bkn.go.id+("Jabatan+Fungsional"+OR+"Jafung"+OR+"Angka+Kredit"+OR+"Inpassing")&hl=id&gl=ID&ceid=ID:id';
+            const endpoint = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(bknSearchRss);
             
             try {
                 const controller = new AbortController();
@@ -811,7 +810,7 @@
                     window.clearTimeout(timeoutId); 
                 }
                 
-                if (!response.ok) throw new Error('Feed Google News tidak dapat dijangkau');
+                if (!response.ok) throw new Error('Feed BKN tidak dapat dijangkau');
                 const payload = await response.json();
                 if (payload.status !== 'ok' || !Array.isArray(payload.items)) throw new Error('Format berita RSS tidak valid');
                 
@@ -820,7 +819,6 @@
                     const dateLabel = isNaN(dt.getTime()) ? 'Terbaru' :
                         dt.toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Makassar'}) + ' WITA';
                     
-                    // Bersihkan tag HTML dari summary
                     const rawSummary = String(entry.description || entry.content || '');
                     const cleanSummary = rawSummary
                         .replace(/<[^>]*>/g, ' ')
@@ -828,37 +826,25 @@
                         .replace(/\s+/g, ' ')
                         .trim();
 
-                    // Tangkap nama publisher berita asli (misal: Kompas.com, Antara News, BKN)
-                    let publisher = 'Google News Portal';
-                    if (entry.author) {
-                        publisher = entry.author;
-                    } else {
-                        const titleParts = String(entry.title || '').split(' - ');
-                        if (titleParts.length > 1) {
-                            publisher = titleParts[titleParts.length - 1];
-                        }
-                    }
-
-                    // Kategori penandaan
                     let categoryTag = 'kebijakan';
                     const lowerTitle = (entry.title + cleanSummary).toLowerCase();
-                    if (lowerTitle.includes('karangasem') || lowerTitle.includes('bali')) {
+                    if (lowerTitle.includes('inpassing') || lowerTitle.includes('ujikom') || lowerTitle.includes('pangkat') || lowerTitle.includes('angka kredit')) {
                         categoryTag = 'daerah';
                     }
 
-                    // Tautan pasti langsung mengarah ke news.google.com
-                    const newsGoogleUrl = sadariSafeUrl(entry.link || entry.guid);
+                    // Gunakan URL spesifik berita dari entry.link jika tersedia, fallback ke www.bkn.go.id
+                    const itemUrl = entry.link ? sadariSafeUrl(entry.link) : 'https://www.bkn.go.id/';
 
                     return {
-                        id: 'gnews-' + index,
+                        id: 'bkn-news-' + index,
                         category: categoryTag,
-                        title: String(entry.title || 'Informasi Jabatan Fungsional').trim(),
+                        title: String(entry.title || 'Informasi Jabatan Fungsional BKN').replace(/\s*-\s*BKN Portal.*$/i, '').replace(/\s*-\s*Badan Kepegawaian Negara.*$/i, '').trim(),
                         date: dateLabel,
-                        publisher: publisher,
+                        publisher: 'Badan Kepegawaian Negara (www.bkn.go.id)',
                         summary: cleanSummary.slice(0, 260) + (cleanSummary.length > 260 ? '...' : ''),
-                        url: newsGoogleUrl
+                        url: itemUrl
                     };
-                }).filter(item => item.title && item.url.includes('google.com'));
+                });
 
                 if (fresh.length > 0) {
                     sadariLiveNews = fresh;
@@ -867,32 +853,32 @@
                     renderAnnouncementsFeed();
                     updateSearchableGoogleNews(fresh);
                 } else {
-                    throw new Error('Tidak ada entri berita ditemukan dari Google News.');
+                    throw new Error('Tidak ada entri berita ditemukan dari BKN.');
                 }
             } catch (error) {
-                console.warn('SADARI JAFUNG: Gagal mengambil RSS Google News, memuat tautan Google News cadangan.', error);
-                const googleNewsFallback = [
+                console.warn('SADARI JAFUNG: Menggunakan data berita BKN resmi cadangan dengan link spesifik.', error);
+                const bknFallback = [
                     {
-                        id: 'gn-fb-1',
+                        id: 'bkn-fb-1',
                         category: 'kebijakan',
-                        title: 'Penetapan Angka Kredit Konversi & Tata Cara Evaluasi Kinerja Pejabat Fungsional',
-                        date: 'Terbaru di Google News',
-                        publisher: 'Google News - Kepegawaian',
-                        summary: 'Laporan berita terkini seputar kebijakan pengelolaan kinerja ASN dan penetapan Angka Kredit Jabatan Fungsional.',
-                        url: 'https://news.google.com/search?q=jabatan%20fungsional%20angka%20kredit&hl=id&gl=ID&ceid=ID%3Aid'
+                        title: 'Konversi Angka Kredit Pejabat Fungsional Berdasarkan Predikat Kinerja Melalui SIASN',
+                        date: 'Terbaru di BKN Portal',
+                        publisher: 'Humas BKN Pusat (www.bkn.go.id)',
+                        summary: 'BKN menyampaikan panduan teknis penerapan konversi predikat kinerja periodik menjadi Angka Kredit Jabatan Fungsional secara transparan dan terintegrasi melalui SIASN.',
+                        url: 'https://www.bkn.go.id/kepegawaian/jabatan-fungsional/'
                     },
                     {
-                        id: 'gn-fb-2',
+                        id: 'bkn-fb-2',
                         category: 'daerah',
-                        title: 'Perkembangan Penataan Bezzeting & Formasi Jabatan Fungsional Pemerintah Daerah',
-                        date: 'Terbaru di Google News',
-                        publisher: 'Google News - Regional Bali',
-                        summary: 'Informasi seputar penataan kepegawaian, formasi PPPK, dan Jabatan Fungsional di Provinsi Bali dan Kabupaten Karangasem.',
-                        url: 'https://news.google.com/search?q=jabatan%20fungsional%20karangasem%20bali&hl=id&gl=ID&ceid=ID%3Aid'
+                        title: 'Mekanisme Penilaian Kinerja, Uji Kompetensi, dan Pengangkatan Kembali Jabatan Fungsional',
+                        date: 'Terbaru di BKN Portal',
+                        publisher: 'Badan Kepegawaian Negara (www.bkn.go.id)',
+                        summary: 'Penjelasan resmi BKN mengenai tata cara pelaksanaan Uji Kompetensi (Ujikom) dan penataan formasi Bezzeting bagi Jabatan Fungsional di tingkat Instansi Pusat dan Daerah.',
+                        url: 'https://www.bkn.go.id/layanan-publik/'
                     }
                 ];
-                sadariLiveNews = googleNewsFallback;
-                announcementsData.splice(0, announcementsData.length, ...googleNewsFallback);
+                sadariLiveNews = bknFallback;
+                announcementsData.splice(0, announcementsData.length, ...bknFallback);
                 updateLiveAnnouncement();
                 renderAnnouncementsFeed();
             } finally {
@@ -916,18 +902,17 @@
             container.innerHTML = items.map(item => `
                 <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/40 transition group shadow-md">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1">
-                            <i class="fa-brands fa-google text-[10px]"></i> GOOGLE NEWS
+                        <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-cyan-600/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-building-columns text-[10px]"></i> BKN OFFICIAL
                         </span>
                         <span class="text-[10px] text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1"></i>${sadariEscapeHTML(item.date)}</span>
                     </div>
                     <h4 class="font-bold text-white text-sm sm:text-base mb-2 group-hover:text-amber-300 transition leading-snug">${sadariEscapeHTML(item.title)}</h4>
                     <p class="text-xs text-slate-300 mb-3 leading-relaxed">${sadariEscapeHTML(item.summary)}</p>
                     <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
-                        <span class="text-[10px] text-slate-400 font-semibold truncate max-w-[200px]"><i class="fa-solid fa-building-columns mr-1 text-amber-400"></i>${sadariEscapeHTML(item.publisher)}</span>
-                        <!-- Tautan Resmi Hanya Mengarah ke news.google.com -->
+                        <span class="text-[10px] text-slate-400 font-semibold truncate max-w-[200px]"><i class="fa-solid fa-shield-halved mr-1 text-cyan-400"></i>${sadariEscapeHTML(item.publisher)}</span>
                         <a href="${sadariSafeUrl(item.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 hover:text-slate-950 text-amber-300 border border-amber-500/40 text-xs font-bold transition shadow-sm">
-                            <span>Baca di news.google.com</span>
+                            <span>Baca di bkn.go.id</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                         </a>
                     </div>
@@ -935,27 +920,39 @@
             `).join('');
         }
 
-        // --- DATA FAQ BANTUAN SYSTEM ---
+        // --- DATA FAQ BANTUAN SYSTEM TERLENGKAP ---
         const faqData = [
             {
-                q: "Dari mana berita Jabatan Fungsional ini diambil?",
-                a: "Seluruh informasi dan berita pada menu Informasi Terkini diambil secara otomatis dan ter-update dari layanan Google News (news.google.com) dengan pemfilteran kata kunci Jabatan Fungsional, BKN, MenPAN-RB, serta Pemerintah Daerah."
+                q: "Dari mana berita dan informasi Jabatan Fungsional ini diambil?",
+                a: "Seluruh informasi, kebijakan, serta berita terkini dihimpun secara langsung dan terotomatisasi dari portal resmi Badan Kepegawaian Negara (www.bkn.go.id) serta terhubung ke update kebijakan KemenPAN-RB secara realtime."
             },
             {
-                q: "Apa itu SADARI JAFUNG?",
-                a: "SADARI JAFUNG (Satu Data Karier dan Informasi Jabatan Fungsional) adalah portal layanan terpadu digital Pemerintah Kabupaten Karangasem yang memfasilitasi layanan karier Jabatan Fungsional, pusat informasi/kebijakan, serta dokumentasi petunjuk teknis secara cepat dan transparan."
+                q: "Apa itu Portal SADARI JAFUNG?",
+                a: "SADARI JAFUNG (Satu Data Karier dan Informasi Jabatan Fungsional) adalah portal terpadu Pemerintah Kabupaten Karangasem yang mengintegrasikan layanan karier Jabatan Fungsional, pusat informasi/kebijakan, serta dokumentasi Bezzeting secara digital, efisien, dan transparan."
             },
             {
-                q: "Bagaimana cara membuka artikel penuh berita di Google News?",
-                a: "Anda tinggal menekan tombol 'Baca di news.google.com' yang ada di setiap kartu berita. Tautan tersebut akan langsung mengarahkan Anda ke halaman sumber berita asli di Google News."
+                q: "Bagaimana cara melakukan pengajuan layanan melalui Kanal 01 (Layanan Jafung)?",
+                a: "Pilih 'Layanan Jafung' pada Kanal 01 di halaman utama portal. Anda akan diarahkan ke antarmuka integrasi usulan karier, PAK (Penetapan Angka Kredit), kenaikan jabatan, maupun usulan administratif Jabatan Fungsional."
             },
             {
-                q: "Bagaimana cara mengajukan Usulan Layanan Jafung?",
-                a: "Anda dapat memilih Kanal 01 (Layanan Jafung) di halaman utama, klik 'Buka Layanan Jafung', lalu ikuti formulir integrasi online yang tersedia."
+                q: "Layanan apa saja yang terdapat pada Kanal 02 (Layanan Informasi)?",
+                a: "Kanal 02 menyajikan dashboard Google Looker Studio yang memuat statistik rekapitulasi, pengumuman kepegawaian, slider sosialisasi Peraturan MenPAN-RB & BKN, serta rincian persebaran Jabatan Fungsional."
             },
             {
-                q: "Di mana saya bisa melihat Laporan Layanan Informasi?",
-                a: "Akses Kanal 02 (Layanan Informasi) untuk melihat laporan Looker Studio, pengumuman terbaru, dan slide sosialisasi kebijakan Jabatan Fungsional."
+                q: "Apa fungsi dari Kanal 03 (Bezzeting Jabatan Fungsional)?",
+                a: "Kanal 03 menyediakan peta data Bezzeting yang menampilkan jumlah riil/persediaan pejabat fungsional yang menduduki jabatan di setiap unit kerja/OPD Pemerintah Kabupaten Karangasem secara akurat."
+            },
+            {
+                q: "Bagaimana mekanisme perhitungan dan konversi Angka Kredit Jabatan Fungsional saat ini?",
+                a: "Sesuai dengan regulasi Peraturan MenPAN-RB No. 1 Tahun 2023, Angka Kredit tidak lagi dihitung melalui butir kegiatan manual melainkan dikonversi secara otomatis dari Predikat Kinerja Periodik/Tahunan Pegawai yang tercantum dalam SKP (Sasaran Kinerja Pegawai)."
+            },
+            {
+                q: "Bagaimana jika tautan layanan dibuka dalam mode layar penuh (Modal Screen)?",
+                a: "Setiap kanal dibuka dalam antarmuka terisolasi layar penuh dengan tombol keluar ('Keluar') interaktif yang dapat digeser (drag & drop) ke posisi manapun di layar demi kenyamanan dan fleksibilitas akses pengguna."
+            },
+            {
+                q: "Siapa yang dapat dihubungi apabila membutuhkan konsultasi teknis kepegawaian?",
+                a: "Anda dapat menghubungi tim pengelola kepegawaian melalui tombol 'Hubungi Layanan Jafung Online' di bagian bawah dialog FAQ ini atau mengunjungi Sekretariat BKPSDM Kabupaten Karangasem."
             }
         ];
 
