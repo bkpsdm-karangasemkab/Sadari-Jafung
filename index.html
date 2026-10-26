@@ -34,7 +34,7 @@
                             goldLight: '#e0c58f',
                             cream: '#eef3f9',
                             cardBg: '#ffffff',
-                            darkFooter: '#0b1b31',
+                            darkFooter: '#08172b',
                             brownAccent: '#173456',
                         }
                     }
@@ -48,6 +48,13 @@
             --sadari-navy: #142b49;
             --sadari-navy-deep: #0d1f36;
             --sadari-gold: #c28a43;
+        }
+
+        /* Mobile Navigation Drawer & Backdrop Focus */
+        #mobile-nav-drawer {
+            background-color: #091a30 !important;
+            border: 2px solid #c8a66b !important;
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 0 9999px rgba(8, 23, 43, 0.75) !important;
         }
 
         html {
@@ -229,16 +236,6 @@
             #exit-service-button span, .sadari-main-header .gold-button span { display: none; }
         }
 
-        /* Custom Donut Chart CSS */
-        .donut-chart {
-            background: conic-gradient(
-                #a36218 0% 43.5%, 
-                #d97706 43.5% 61%, 
-                #78350f 61% 100%
-            );
-            border-radius: 50%;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #f1ece1; }
@@ -324,7 +321,8 @@
             box-shadow: 0 8px 22px rgba(4,18,34,.22) !important;
         }
         .gold-button:hover { background: linear-gradient(135deg,#e2ca98 0%,#c5a46b 100%) !important; }
-        /* Komponen Tailwind yang semula bernuansa cokelat/amber dialihkan ke palet navy */
+        
+        /* Modifikasi warna elemen pendukung */
         [class~="bg-amber-900"], [class~="bg-amber-950"], [class~="bg-amber-800"] {
             background-color: #17395f !important;
         }
@@ -356,13 +354,10 @@
             box-shadow: 0 8px 24px rgba(15,39,67,.055) !important;
         }
         .card-shadow:hover { box-shadow: 0 16px 34px rgba(15,39,67,.13) !important; }
-        .donut-chart {
-            background: conic-gradient(#17395f 0% 43.5%, #c8a66b 43.5% 61%, #42668d 61% 100%) !important;
-        }
         ::-webkit-scrollbar-track { background: #e4ebf3 !important; }
         ::-webkit-scrollbar-thumb { background: #607d9e !important; }
         ::-webkit-scrollbar-thumb:hover { background: #17395f !important; }
-        footer, [class~="bg-stone-900"] { background-color: #091a30 !important; }
+
         @media (max-width: 1023px) {
             .hero-banner {
                 background:
@@ -371,57 +366,158 @@
                 background-size: cover !important;
             }
         }
-
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-amber-800 selection:text-white pt-[72px]">
 
-    <!-- ================= NAVBAR HEADER (FIXED & STICKY AT TOP) ================= -->
-    <header class="sadari-main-header fixed top-0 left-0 right-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-amber-900/10 shadow-sm px-3 sm:px-6 py-3 transition-all">
-        <div class="w-full max-w-[98%] mx-auto flex items-center justify-between gap-4">
+    <!-- ================= NAVBAR HEADER (FIXED & RESPONSIVE FOR ALL DEVICES) ================= -->
+    <header class="sadari-main-header fixed top-0 left-0 right-0 z-50 w-full bg-[#0a1d34]/95 backdrop-blur-md border-b border-[#c8a66b]/40 shadow-md px-3 sm:px-6 py-2.5 transition-all">
+        <div class="w-full max-w-[98%] mx-auto flex items-center justify-between gap-2 sm:gap-4">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center p-1 border border-amber-200">
+            <a href="#" class="flex items-center space-x-2 sm:space-x-3 group shrink-0">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/10 flex items-center justify-center p-1 border border-[#c8a66b]/40">
                     <img src="https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png" 
                          alt="Logo SADARI JAFUNG" 
                          class="w-full h-full object-contain"
-                         onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crown text-amber-800 text-xl\'></i>';"/>
+                         onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crown text-amber-200 text-lg\'></i>';"/>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg sm:text-xl text-stone-900 tracking-tight leading-tight group-hover:text-amber-800 transition">
+                    <h1 class="font-bold text-sm sm:text-lg text-white tracking-tight leading-tight group-hover:text-[#e0c58f] transition font-cinzel sm:font-sans">
                         SADARI JAFUNG
                     </h1>
-                    <p class="text-[10px] sm:text-xs text-amber-900/70 font-medium tracking-wide">Satu Data Karier & Informasi Jabatan fungsional</p>
+                    <p class="text-[9px] sm:text-xs text-[#e0c58f] font-medium tracking-wide">Satu Data Karier & Informasi Jafung</p>
                 </div>
             </a>
 
-            <!-- Navigation Links -->
-            <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs sm:text-sm font-semibold text-stone-700">
-                <a href="#beranda" class="px-3 py-2 rounded-lg text-amber-900 bg-amber-50 border-b-2 border-amber-800 flex items-center gap-2">
-                    <i class="fa-solid fa-house text-amber-800"></i> Beranda
+            <!-- Desktop Navigation Links (Large Screens) -->
+            <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs sm:text-sm font-semibold text-slate-200">
+                <a href="#beranda" class="px-3 py-2 rounded-lg text-[#f0d7a3] bg-white/10 border-b-2 border-[#c8a66b] flex items-center gap-2 transition">
+                    <i class="fa-solid fa-house text-[#c8a66b]"></i> Beranda
                 </a>
-                <a href="#kanals" class="px-3 py-2 rounded-lg hover:text-amber-800 hover:bg-stone-50 transition flex items-center gap-2">
-                    <i class="fa-solid fa-briefcase text-stone-500"></i> Layanan Karir
+                <a href="#kanals" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-briefcase text-slate-400"></i> Layanan Karir
                 </a>
-                <a href="#berita" class="px-3 py-2 rounded-lg hover:text-amber-800 hover:bg-stone-50 transition flex items-center gap-2">
-                    <i class="fa-solid fa-newspaper text-stone-500"></i> Informasi
+                <a href="#berita" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper text-slate-400"></i> Informasi
                 </a>
-                <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="px-3 py-2 rounded-lg hover:text-amber-800 hover:bg-stone-50 transition flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-stone-500"></i> Bantuan FAQ
+                <a href="#kontak-footer" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-building-columns text-slate-400"></i> Kontak & Lokasi
+                </a>
+                <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question text-slate-400"></i> Bantuan FAQ
                 </a>
             </nav>
 
-            <!-- Action Controls -->
-            <div class="flex items-center space-x-2 sm:space-x-3">
-                <button onclick="openModal('search-modal')" class="p-2.5 rounded-full text-stone-600 hover:bg-stone-100 hover:text-amber-800 transition" title="Cari Informasi">
-                    <i class="fa-solid fa-magnifying-glass text-base"></i>
+            <!-- Action Controls & Mobile Menu Toggle Button -->
+            <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+                <button onclick="openModal('search-modal'); focusSearchInput();" class="p-2 sm:p-2.5 rounded-xl text-slate-300 hover:bg-white/10 hover:text-[#f0d7a3] transition" title="Pencarian Portal SADARI JAFUNG">
+                    <i class="fa-solid fa-magnifying-glass text-sm sm:text-base"></i>
                 </button>
-                <a href="#kanals" class="hidden sm:flex items-center gap-2 p-2.5 rounded-full text-stone-600 hover:bg-stone-100 hover:text-amber-800 transition" title="Profil">
-                    <i class="fa-regular fa-user text-lg"></i>
-                </a>
+
                 <button id="exit-service-button" onclick="closeActiveService()" class="items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border border-rose-300/40 bg-rose-600 hover:bg-rose-700 text-white shadow-md transition" title="Keluar dari layanan" aria-label="Keluar Layanan">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Keluar Layanan</span>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> <span class="hidden sm:inline">Keluar Layanan</span>
                 </button>
+
+                <!-- Hamburger Button for Mobile/Tablet -->
+                <button id="mobile-menu-btn" onclick="toggleMobileNav()" class="lg:hidden p-2 sm:p-2.5 rounded-xl bg-[#c8a66b]/20 border border-[#c8a66b]/50 text-[#f0d7a3] hover:bg-[#c8a66b]/30 transition focus:outline-none shadow-sm active:scale-95" aria-label="Buka Menu">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg sm:text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile & Tablet Navigation Menu Dropdown / Drawer -->
+        <div id="mobile-nav-drawer" class="hidden lg:hidden fixed top-[var(--sadari-header-height)] inset-x-2 sm:inset-x-4 mt-2 rounded-2xl transition-all duration-300 overflow-y-auto max-h-[calc(100vh-var(--sadari-header-height)-1.5rem)] z-50">
+            <div class="p-4 sm:p-6 space-y-3 text-sm font-semibold">
+
+                <div class="px-3 py-2 rounded-xl bg-[#17395f] border border-[#c8a66b]/40 text-[11px] font-extrabold uppercase tracking-widest text-[#f0d7a3] flex items-center justify-between shadow-inner mb-3">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-[#c8a66b]"></i> Navigasi Portal
+                    </span>
+                    <span class="text-[10px] bg-[#c8a66b] text-[#08172b] px-2 py-0.5 rounded-md font-black">SADARI JAFUNG</span>
+                </div>
+
+                <!-- Item 1: Beranda -->
+                <a href="#beranda" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-gradient-to-r from-[#1d3b60] to-[#102844] border border-[#c8a66b]/60 shadow-md active:scale-[0.98] transition hover:border-[#c8a66b]">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#c8a66b]/25 border border-[#c8a66b]/60 flex items-center justify-center text-[#f0d7a3] shadow-sm">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span class="font-bold text-white tracking-wide">Beranda Utama</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]"></i>
+                </a>
+
+                <!-- Item 2: Layanan Karir -->
+                <a href="#kanals" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Layanan Karier & Kanal</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
+                <!-- Item 3: Data ASN -->
+                <a href="#data-asn" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Data ASN Fungsional</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
+                <!-- Item 4: Informasi Berita -->
+                <a href="#berita" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Informasi & Berita</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
+                <!-- Item 5: Kontak & Lokasi (Footer) -->
+                <a href="#kontak-footer" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Kontak & Lokasi Kantor</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
+                <!-- Item 6: FAQ Modal Trigger -->
+                <a href="javascript:void(0)" onclick="closeMobileNav(); openModal('faq-modal')" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Pusat Bantuan FAQ</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
+                <!-- Mobile Card Footer / Contact Info Banner -->
+                <div class="mt-4 p-4 rounded-xl bg-gradient-to-br from-[#17395f] to-[#0a1d34] border border-[#c8a66b]/50 text-xs text-slate-200 flex items-center justify-between shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#c8a66b]/20 border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3] text-sm shrink-0">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div>
+                            <p class="font-extrabold text-white text-xs">Butuh Bantuan Kepegawaian?</p>
+                            <p class="text-[10px] text-[#e0c58f]">BKPSDM Kab. Karangasem</p>
+                        </div>
+                    </div>
+                    <button onclick="closeMobileNav(); openModal('faq-modal')" class="px-3.5 py-1.5 rounded-lg bg-[#c8a66b] text-[#0a1d34] font-black text-[11px] shadow hover:bg-[#e0c58f] transition shrink-0">
+                        Bantuan
+                    </button>
+                </div>
+
             </div>
         </div>
     </header>
@@ -430,7 +526,7 @@
 
         <!-- ================= HERO BANNER SECTION ================= -->
         <section id="beranda" class="relative hero-banner pt-10 sm:pt-16 pb-28 sm:pb-40 lg:pb-48 px-3 sm:px-6 border-b border-amber-900/10 overflow-hidden min-h-[420px] sm:min-h-[520px] flex items-center">
-            <!-- Decorative Right Corner Balinese Pattern Overlay (Tersorot, Jelas, Berukuran Lebih Besar & Interaktif) -->
+            <!-- Decorative Right Corner Balinese Pattern Overlay -->
             <div class="hero-accent-container absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 w-1/2 lg:w-2/5 h-full max-h-[90%] hidden md:flex items-center justify-center pointer-events-auto z-10 p-4 transition-all duration-500 overflow-visible">
                 <img src="https://cdn.phototourl.com/member/2026-10-10-f3187d86-166c-4e0a-a1e0-d496fbf19411.png" 
                      alt="Emblem SADARI JAFUNG" 
@@ -462,8 +558,7 @@
             </div>
         </section>
 
-
-        <!-- ================= AKSES TERPADU KANAL LAYANAN (DIPINDAHKAN DI BAWAH HERO BANNER) ================= -->
+        <!-- ================= AKSES TERPADU KANAL LAYANAN ================= -->
         <section class="w-full max-w-[98%] mx-auto px-3 sm:px-6 pt-8 sm:pt-10 mb-6 relative z-20">
             <div class="p-5 sm:p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-amber-900/15 shadow-sm max-w-2xl">
                 <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-900 bg-amber-100/90 px-3 py-1 rounded-md inline-block mb-2 border border-amber-300/50">
@@ -543,7 +638,7 @@
                 </div>
 
                 <!-- Kanal 5 -->
-                <div onclick="scrollToSection('regulasi')" 
+                <div onclick="openModal('berita-info-modal')" 
                      class="bg-white rounded-2xl p-4 sm:p-5 text-center card-shadow cursor-pointer group border border-stone-100 flex flex-col items-center justify-between">
                     <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-900 text-white flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-md">
                         <i class="fa-solid fa-gear"></i>
@@ -575,10 +670,9 @@
             </div>
         </section>
 
-        <!-- ================= Embedded Request 2: Data, kabar, dan regulasi ================= -->
+        <!-- ================= BANNER HIGHLIGHT ================= -->
         <section class="w-full max-w-[98%] mx-auto px-3 sm:px-6 mb-8">
             <div class="bg-gradient-to-r from-amber-900 via-amber-800 to-amber-950 rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-amber-700/30 relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <!-- Background decorative accent -->
                 <div class="absolute right-0 top-0 bottom-0 w-64 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="relative z-10 max-w-2xl">
@@ -634,7 +728,7 @@
                                     <i class="fa-solid fa-link text-xl"></i>
                                 </div>
                                 <h4 class="font-bold text-slate-800 text-sm">Tampilan Data ASN Fungsional</h4>
-                                <p class="mt-2 max-w-xs text-xs leading-relaxed text-slate-500">Tempel URL data Anda pada konstanta <code class="px-1 py-0.5 rounded bg-slate-200 text-slate-700">DATA_ASN_FUNGSIONAL_URL</code> di bagian script file HTML ini.</p>
+                                <p class="mt-2 max-w-xs text-xs leading-relaxed text-slate-500">Menghubungkan ke server data kepegawaian...</p>
                             </div>
                         </div>
                     </div>
@@ -643,7 +737,6 @@
                 <!-- MIDDLE COLUMN: ABOUT CARD / LOGO CENTER -->
                 <div class="lg:col-span-4 flex flex-col h-full">
                     <div class="bg-gradient-to-b from-amber-50/60 via-white to-amber-50/40 rounded-2xl p-5 sm:p-6 border border-amber-900/10 shadow-sm text-center flex flex-col justify-start h-full min-h-[560px] lg:min-h-[620px] relative overflow-hidden">
-                        <!-- Decorative Balinese Temple Sillouette Bottom Background -->
                         <div class="absolute inset-x-0 bottom-0 h-24 bg-contain bg-bottom bg-repeat-x opacity-10 pointer-events-none" style="background-image: url('https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png');"></div>
 
                         <div class="flex-1 flex flex-col justify-start pt-2">
@@ -670,7 +763,7 @@
                                 </p>
                             </div>
 
-                            <!-- Feature Icons 4 Grid -->
+                            <!-- Feature Icons Grid -->
                             <div class="grid grid-cols-4 gap-2 mb-4 mt-auto">
                                 <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-sm flex flex-col items-center">
                                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs mb-1">
@@ -708,7 +801,7 @@
                     </div>
                 </div>
 
-                <!-- RIGHT COLUMN: EMBEDDED BERITA & INFORMASI JAFUNG (KEMBALI DITAMPILKAN & SIMETRIS) -->
+                <!-- RIGHT COLUMN: EMBEDDED BERITA & INFORMASI JAFUNG -->
                 <div id="berita" class="lg:col-span-4 min-w-0 flex flex-col h-full">
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                         <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3 shrink-0">
@@ -752,7 +845,157 @@
             </div>
         </section>
 
-    <!-- 2. ANNOUNCEMENTS / PENGUMUMAN MODAL (BERITA & INFORMASI EMBED) -->
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- ================= FOOTER ESTETIK & PROFESIONAL ================== -->
+    <!-- ================================================================= -->
+    <footer id="kontak-footer" class="bg-[#08172b] text-slate-300 relative overflow-hidden border-t border-[#c8a66b]/30">
+        <!-- Top Accent Line (Aksen Emas Gradasi Balinese) -->
+        <div class="h-1.5 w-full bg-gradient-to-r from-[#ad874b] via-[#e2ca98] to-[#ad874b]"></div>
+
+        <!-- Decorative Glow Blur Ambient Background -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#17395f]/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#c8a66b]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-[95%] xl:max-w-[88%] mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-12 border-b border-slate-800/80">
+
+                <!-- Column 1: Identitas / Brand (Lg: 4 Cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-2 border border-[#c8a66b]/40 shadow-inner flex items-center justify-center shrink-0">
+                            <img src="https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png" alt="Logo SADARI JAFUNG" class="w-full h-full object-contain"/>
+                        </div>
+                        <div>
+                            <h3 class="font-black text-lg text-white tracking-tight font-cinzel">SADARI JAFUNG</h3>
+                            <p class="text-[11px] text-[#e0c58f] font-semibold tracking-wide">Pemerintah Kabupaten Karangasem</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                        Satu Data Karier & Informasi Jabatan Fungsional. Platform ekosistem digital terpadu untuk efisiensi manajemen karier, penetapan PAK, dan integrasi data ASN fungsional yang transparan dan akuntabel.
+                    </p>
+                    <div class="pt-2 flex items-center gap-3">
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="mailto:info@karangasemkab.go.id" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Email Kami">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigasi Cepat (Lg: 3 Cols) -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-xs font-extrabold uppercase tracking-widest text-[#e0c58f] border-b border-slate-800 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-xs text-[#c8a66b]"></i> Navigasi Portal
+                    </h4>
+                    <ul class="space-y-2 text-xs font-medium">
+                        <li>
+                            <a href="#beranda" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Beranda Utama
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#kanals" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Layanan Karier & Kanal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#data-asn" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Data & Statistik ASN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#berita" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Berita & Info Terbaru
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Pusat Bantuan FAQ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Kanal Layanan Utama (Lg: 2 Cols) -->
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="text-xs font-extrabold uppercase tracking-widest text-[#e0c58f] border-b border-slate-800 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-xs text-[#c8a66b]"></i> Layanan
+                    </h4>
+                    <ul class="space-y-2 text-xs font-medium">
+                        <li>
+                            <a href="javascript:void(0)" onclick="openChannelWithUrl('kanal-1-modal', 'frame-1-iframe', 'frame-1-placeholder', 'https://script.google.com/macros/s/AKfycbw7QAfyGPXdvc81fFSY1gT-elbu9iqsTCRvkh5GJCfvrcq3s7unfHZyj_Bngd2byKHq/exec')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Info Kebutuhan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="openChannelWithUrl('kanal-2-modal', 'frame-2-iframe', 'frame-2-placeholder', 'https://jafungonline-nv.blogspot.com/')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Administrasi PAK
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="openChannelWithUrl('kanal-3-modal', 'frame-3-iframe', 'frame-3-placeholder', 'https://lookerstudio.google.com/embed/reporting/3850709a-5a80-4745-88df-da402b0fbc74/page/6gM6F')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Instansi Pembina
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="openModal('berita-info-modal')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Regulasi Kepegawaian
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Kontak & Kantor (Lg: 3 Cols) -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-xs font-extrabold uppercase tracking-widest text-[#e0c58f] border-b border-slate-800 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-building-columns text-xs text-[#c8a66b]"></i> Kontak & Operasional
+                    </h4>
+                    <div class="space-y-2.5 text-xs text-slate-300">
+                        <p class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-[#c8a66b] text-sm mt-0.5 shrink-0"></i>
+                            <span>Jl. Untung Surapati, Subagan, Kec. Karangasem, Kabupaten Karangasem, Bali 80811 (Amlapura).</span>
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-[#c8a66b] text-sm shrink-0"></i>
+                            <span>Senin - Jumat: 07.30 - 16.30 WITA</span>
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-shield-halved text-[#c8a66b] text-sm shrink-0"></i>
+                            <span>Badan Kepegawaian & Pengembangan SDM</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Credit Area -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+                <div class="flex items-center gap-2 text-center sm:text-left">
+                    <span>&copy; 2026 <strong>Pemerintah Kabupaten Karangasem</strong>. Hak Cipta Dilindungi.</span>
+                </div>
+                <div class="flex items-center gap-4 text-[11px]">
+                    <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-[#e0c58f] transition">Kebijakan Privasi</a>
+                    <span>•</span>
+                    <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-[#e0c58f] transition">Syarat & Ketentuan</a>
+                    <span>•</span>
+                    <span class="text-[#c8a66b]">SADARI JAFUNG v2.5</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL & DIALOGS ================= -->
+
+    <!-- 1. ANNOUNCEMENTS / PENGUMUMAN MODAL -->
     <div id="berita-info-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
         <div class="w-full max-w-5xl h-[85vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
             <div class="p-4 sm:p-5 border-b border-stone-200 bg-stone-50 flex items-center justify-between shrink-0">
@@ -793,7 +1036,7 @@
         </div>
     </div>
 
-    <!-- 3. BANTUAN FAQ MODAL -->
+    <!-- 2. BANTUAN FAQ MODAL -->
     <div id="faq-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
         <div class="w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-4 sm:p-6 border-b border-stone-200 bg-stone-50 flex items-center justify-between">
@@ -819,7 +1062,59 @@
         </div>
     </div>
 
-    <!-- 4. SERVICE CHANNEL MODALS (1, 2, 3) -->
+    <!-- 2B. MESIN PENCARIAN PORTAL MODAL -->
+    <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-6 pt-16 sm:pt-24 bg-[#08172b]/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-3xl bg-[#0a1d34] border border-[#c8a66b]/40 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+            
+            <!-- Search Header Bar Input -->
+            <div class="p-4 sm:p-5 border-b border-[#c8a66b]/20 bg-[#0d223d] flex items-center gap-3 shrink-0">
+                <div class="w-10 h-10 rounded-2xl bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#e0c58f] text-base shrink-0 shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="flex-1 relative">
+                    <input type="text" 
+                           id="portal-search-input" 
+                           oninput="handleSearchInput()"
+                           placeholder="Cari layanan, PAK, Bezzeting, regulasi, berita, atau FAQ..." 
+                           class="w-full bg-[#08172b] text-white text-sm sm:text-base placeholder-slate-400 px-4 py-3 rounded-2xl border border-[#c8a66b]/30 focus:outline-none focus:border-[#c8a66b] focus:ring-1 focus:ring-[#c8a66b] transition"
+                           autocomplete="off"/>
+                    <button id="search-clear-btn" onclick="clearSearchInput()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                <button onclick="closeModal('search-modal')" class="px-3 py-2 text-slate-300 hover:text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-white/10 transition">
+                    Batal
+                </button>
+            </div>
+
+            <!-- Search Quick Filters / Tags -->
+            <div class="px-4 py-2.5 bg-[#08172b]/60 border-b border-[#c8a66b]/15 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0 text-xs">
+                <span class="text-slate-400 text-[11px] font-bold uppercase tracking-wider shrink-0 flex items-center gap-1">
+                    <i class="fa-solid fa-filter text-[10px] text-[#c8a66b]"></i> Filter:
+                </span>
+                <button onclick="filterSearchCategory('all')" id="filter-btn-all" class="search-filter-chip px-3 py-1 rounded-full bg-[#c8a66b] text-[#08172b] font-extrabold transition shrink-0">Semua</button>
+                <button onclick="filterSearchCategory('layanan')" id="filter-btn-layanan" class="search-filter-chip px-3 py-1 rounded-full bg-[#17395f] text-slate-300 font-semibold hover:bg-[#204a7c] transition shrink-0">Layanan & Kanal</button>
+                <button onclick="filterSearchCategory('informasi')" id="filter-btn-informasi" class="search-filter-chip px-3 py-1 rounded-full bg-[#17395f] text-slate-300 font-semibold hover:bg-[#204a7c] transition shrink-0">Informasi & Regulasi</button>
+                <button onclick="filterSearchCategory('faq')" id="filter-btn-faq" class="search-filter-chip px-3 py-1 rounded-full bg-[#17395f] text-slate-300 font-semibold hover:bg-[#204a7c] transition shrink-0">Bantuan FAQ</button>
+            </div>
+
+            <!-- Search Results Content Area -->
+            <div id="search-results-container" class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-3">
+                <!-- Dynamic Results or Popular Suggestions populated by JS -->
+            </div>
+
+            <!-- Search Footer -->
+            <div class="px-5 py-3 bg-[#0d223d] border-t border-[#c8a66b]/20 flex items-center justify-between text-xs text-slate-400 shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-[10px] font-mono">ESC</span>
+                    <span>untuk menutup</span>
+                </div>
+                <span id="search-count-label" class="text-[11px] text-[#e0c58f] font-semibold">Cari informasi instan portal SADARI JAFUNG</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SERVICE CHANNEL MODALS -->
     <div id="kanal-1-modal" class="service-modal hidden opacity-0 transition-opacity duration-300 bg-stone-900">
         <div class="w-full h-full relative flex flex-col">
             <iframe id="frame-1-iframe" src="about:blank" class="w-full h-full border-0" onload="window.hideChannelPlaceholder('frame-1-placeholder')"></iframe>
@@ -861,11 +1156,6 @@
 
     <!-- ================= SCRIPTS ================= -->
     <script>
-        // ============================================================
-        // KONFIGURASI URL DATA ASN FUNGSIONAL
-        // Tempel URL halaman data Anda di dalam tanda kutip di bawah.
-        // Contoh: const DATA_ASN_FUNGSIONAL_URL = "DATA_ASN_FUNGSIONAL_URL";
-        // ============================================================
         const DATA_ASN_FUNGSIONAL_URL = "https://script.google.com/macros/s/AKfycbywZ_jIPA2ye1JO-15swmOMJgtN0Ppzz_-Ri6yD0gVKsBgFNffcGkWXJjx1sHV87g3w/exec";
 
         function initializeDataAsnEmbed() {
@@ -873,10 +1163,7 @@
             const placeholder = document.getElementById('data-asn-embed-placeholder');
             const url = (DATA_ASN_FUNGSIONAL_URL || '').trim();
             if (!frame || !placeholder || !url) return;
-            if (!/^https?:\/\//i.test(url)) {
-                console.warn('URL Data ASN Fungsional harus diawali http:// atau https://');
-                return;
-            }
+            if (!/^https?:\/\//i.test(url)) return;
             frame.src = url;
             placeholder.classList.add('hidden');
         }
@@ -935,7 +1222,6 @@
             const placeholder = document.getElementById(placeholderId);
             if (!iframe || !url) return;
 
-            // Tutup kanal lain terlebih dahulu agar hanya satu layanan aktif.
             document.querySelectorAll('.service-modal').forEach(modal => {
                 if (modal.id !== modalId) {
                     modal.classList.add('hidden', 'opacity-0');
@@ -986,6 +1272,263 @@
             { q: "Di mana saya bisa melihat peta ketersediaan Bezzeting?", a: "Peta ketersediaan jabatan fungsional dapat diakses melalui Kanal 3 (Data dan Statistik Bezzeting)." }
         ];
 
+        // Search Index Items (Database Pencarian Portal SADARI JAFUNG)
+        const searchDatabase = [
+            {
+                id: 'k1',
+                title: 'Kanal 1 - Dashboard Informasi Kebutuhan & Formasi Jafung',
+                desc: 'Dashboard peta informasi kebutuhan, ketersediaan, dan kondisi jabatan fungsional pada perangkat daerah.',
+                category: 'layanan',
+                icon: 'fa-file-lines',
+                action: () => { closeModal('search-modal'); openChannelWithUrl('kanal-1-modal', 'frame-1-iframe', 'frame-1-placeholder', 'https://script.google.com/macros/s/AKfycbw7QAfyGPXdvc81fFSY1gT-elbu9iqsTCRvkh5GJCfvrcq3s7unfHZyj_Bngd2byKHq/exec'); }
+            },
+            {
+                id: 'k2',
+                title: 'Kanal 2 - Layanan Administrasi & Pengajuan PAK Jafung',
+                desc: 'Layanan administrasi untuk usulan karier, PAK (Penetapan Angka Kredit), dan integrasi Jabatan Fungsional.',
+                category: 'layanan',
+                icon: 'fa-users',
+                action: () => { closeModal('search-modal'); openChannelWithUrl('kanal-2-modal', 'frame-2-iframe', 'frame-2-placeholder', 'https://jafungonline-nv.blogspot.com/'); }
+            },
+            {
+                id: 'k3',
+                title: 'Kanal 3 - Data Informasi Instansi Pembina Jafung',
+                desc: 'Informasi direktori dan pelaporan data instansi pembina jabatan fungsional.',
+                category: 'layanan',
+                icon: 'fa-chart-column',
+                action: () => { closeModal('search-modal'); openChannelWithUrl('kanal-3-modal', 'frame-3-iframe', 'frame-3-placeholder', 'https://lookerstudio.google.com/embed/reporting/3850709a-5a80-4745-88df-da402b0fbc74/page/6gM6F'); }
+            },
+            {
+                id: 'k4',
+                title: 'Kanal 4 - Statistik & Data ASN Fungsional',
+                desc: 'Analisis statistik, grafik sebaran, dan data peta ketersediaan ASN Fungsional Pemkab Karangasem.',
+                category: 'layanan',
+                icon: 'fa-chart-pie',
+                action: () => { closeModal('search-modal'); openChannelWithUrl('kanal-1-modal', 'frame-1-iframe', 'frame-1-placeholder', 'https://script.google.com/macros/s/AKfycbywZ_jIPA2ye1JO-15swmOMJgtN0Ppzz_-Ri6yD0gVKsBgFNffcGkWXJjx1sHV87g3w/exec'); }
+            },
+            {
+                id: 'k5',
+                title: 'Kanal 5 - Kebijakan & Regulasi PermenPAN-RB No 1 Tahun 2023',
+                desc: 'Regulasi kepegawaian, peraturan menteri, petunjuk teknis pengusulan PAK konversi, dan aturan jafung.',
+                category: 'informasi',
+                icon: 'fa-gear',
+                action: () => { closeModal('search-modal'); openModal('berita-info-modal'); }
+            },
+            {
+                id: 'k6',
+                title: 'Kanal 6 - Layanan Bantuan & FAQ Kepegawaian',
+                desc: 'Pusat bantuan interaktif, pertanyaan umum, dan panduan penggunaan portal SADARI JAFUNG.',
+                category: 'faq',
+                icon: 'fa-headset',
+                action: () => { closeModal('search-modal'); openModal('faq-modal'); }
+            },
+            {
+                id: 'data-asn-sec',
+                title: 'Data & Statistik ASN Fungsional Karangasem',
+                desc: 'Visualisasi dan data statistik langsung ASN fungsional di lingkungan Pemerintah Kabupaten Karangasem.',
+                category: 'informasi',
+                icon: 'fa-chart-column',
+                action: () => { closeModal('search-modal'); scrollToSection('data-asn'); }
+            },
+            {
+                id: 'berita-sec',
+                title: 'Berita & Pengumuman Kepegawaian Terkini',
+                desc: 'Portal kabar terbaru, edaran resmi BKPSDM, pengumuman uji kompetensi, dan sertifikasi jafung.',
+                category: 'informasi',
+                icon: 'fa-newspaper',
+                action: () => { closeModal('search-modal'); scrollToSection('berita'); }
+            },
+            {
+                id: 'kontak-sec',
+                title: 'Kontak & Lokasi Kantor BKPSDM Karangasem',
+                desc: 'Alamat resmi Jl. Untung Surapati Amlapura, jam operasional, serta saluran layanan komunikasi.',
+                category: 'informasi',
+                icon: 'fa-building-columns',
+                action: () => { closeModal('search-modal'); scrollToSection('kontak-footer'); }
+            },
+            // FAQ entries as searchable
+            {
+                id: 'faq-1',
+                title: 'FAQ: Apa itu Portal SADARI JAFUNG?',
+                desc: 'SADARI JAFUNG adalah portal terpadu Pemkab Karangasem untuk layanan karier, PAK, dan Bezzeting.',
+                category: 'faq',
+                icon: 'fa-circle-question',
+                action: () => { closeModal('search-modal'); openModal('faq-modal'); }
+            },
+            {
+                id: 'faq-2',
+                title: 'FAQ: Cara Pengajuan PAK Konversi SKP',
+                desc: 'Tata cara usulan penetapan angka kredit yang dikonversi langsung dari predikat kinerja periodik SKP.',
+                category: 'faq',
+                icon: 'fa-circle-question',
+                action: () => { closeModal('search-modal'); openModal('faq-modal'); }
+            }
+        ];
+
+        let selectedSearchCategory = 'all';
+
+        window.focusSearchInput = function() {
+            setTimeout(() => {
+                const input = document.getElementById('portal-search-input');
+                if (input) input.focus();
+            }, 100);
+            renderSearchResults();
+        };
+
+        window.clearSearchInput = function() {
+            const input = document.getElementById('portal-search-input');
+            if (input) {
+                input.value = '';
+                input.focus();
+            }
+            handleSearchInput();
+        };
+
+        window.filterSearchCategory = function(cat) {
+            selectedSearchCategory = cat;
+            document.querySelectorAll('.search-filter-chip').forEach(btn => {
+                btn.className = 'search-filter-chip px-3 py-1 rounded-full bg-[#17395f] text-slate-300 font-semibold hover:bg-[#204a7c] transition shrink-0';
+            });
+            const activeBtn = document.getElementById(`filter-btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = 'search-filter-chip px-3 py-1 rounded-full bg-[#c8a66b] text-[#08172b] font-extrabold transition shrink-0';
+            }
+            renderSearchResults();
+        };
+
+        window.handleSearchInput = function() {
+            const input = document.getElementById('portal-search-input');
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) {
+                if (input && input.value.trim().length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+            }
+            renderSearchResults();
+        };
+
+        function renderSearchResults() {
+            const input = document.getElementById('portal-search-input');
+            const container = document.getElementById('search-results-container');
+            const countLabel = document.getElementById('search-count-label');
+            if (!container) return;
+
+            const query = input ? input.value.trim().toLowerCase() : '';
+
+            let filtered = searchDatabase.filter(item => {
+                const matchCategory = (selectedSearchCategory === 'all') || (item.category === selectedSearchCategory);
+                if (!matchCategory) return false;
+
+                if (!query) return true; // Show all / defaults if no query
+                return item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+            });
+
+            if (countLabel) {
+                if (query) {
+                    countLabel.textContent = `Ditemukan ${filtered.length} hasil pencarian`;
+                } else {
+                    countLabel.textContent = `Menampilkan rekomendasi layanan populer`;
+                }
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-slate-400">
+                        <div class="w-14 h-14 rounded-2xl bg-[#17395f] border border-[#c8a66b]/30 flex items-center justify-center mx-auto mb-3 text-2xl text-[#e0c58f]">
+                            <i class="fa-solid fa-magnifying-glass-minus"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm mb-1">Hasil Tidak Ditemukan</h4>
+                        <p class="text-xs text-slate-400 max-w-xs mx-auto">Coba gunakan kata kunci lain seperti "PAK", "Kanal 1", "Formasi", "Regulasi", atau "FAQ".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map((item, index) => `
+                <div onclick="executeSearchAction(${index})" class="group p-3.5 sm:p-4 rounded-2xl bg-[#0e243f] border border-[#c8a66b]/20 hover:border-[#c8a66b]/70 hover:bg-[#153459] cursor-pointer transition flex items-start gap-3.5 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#e0c58f] group-hover:bg-[#c8a66b] group-hover:text-[#08172b] transition shrink-0 mt-0.5">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-[#c8a66b]/20 text-[#f0d7a3] border border-[#c8a66b]/30">${item.category}</span>
+                            <h4 class="font-bold text-xs sm:text-sm text-white group-hover:text-[#f0d7a3] transition truncate">${highlightText(item.title, query)}</h4>
+                        </div>
+                        <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${highlightText(item.desc, query)}</p>
+                    </div>
+                    <div class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-[#c8a66b] text-slate-400 group-hover:text-[#08172b] flex items-center justify-center text-xs transition shrink-0 self-center">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            `).join('');
+
+            // Store current filtered list globally for execution
+            window.currentFilteredSearchResults = filtered;
+        }
+
+        function highlightText(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark class="bg-[#c8a66b]/40 text-white rounded px-0.5 font-bold">$1</mark>');
+        }
+
+        window.executeSearchAction = function(index) {
+            if (window.currentFilteredSearchResults && window.currentFilteredSearchResults[index]) {
+                window.currentFilteredSearchResults[index].action();
+            }
+        };
+
+        // Mobile Navigation Handler
+        window.toggleMobileNav = function() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (!drawer || !icon) return;
+
+            const isHidden = drawer.classList.contains('hidden');
+            if (isHidden) {
+                drawer.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+                // Lock main background scroll and focus scrolling on mobile drawer
+                document.body.style.overflow = 'hidden';
+            } else {
+                window.closeMobileNav();
+            }
+        };
+
+        window.closeMobileNav = function() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (drawer && !drawer.classList.contains('hidden')) {
+                drawer.classList.add('hidden');
+            }
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+            // Restore normal page scroll if no active modal is open
+            const anyActiveModal = Array.from(document.querySelectorAll('.fixed')).some(el =>
+                !el.classList.contains('hidden') && (el.id.endsWith('-modal') || el.classList.contains('service-modal'))
+            );
+            if (!anyActiveModal) {
+                document.body.style.overflow = '';
+            }
+        };
+
+        window.closeMobileNav = function() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (drawer && !drawer.classList.contains('hidden')) {
+                drawer.classList.add('hidden');
+            }
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        };
+
         function renderFAQ() {
             const container = document.getElementById('faq-accordion-container');
             if (!container) return;
@@ -1011,71 +1554,17 @@
             }
         };
 
-        // Render Announcements
-        const announcementsList = [
-            { title: "PermenPANRB No. 1 Tahun 2023", date: "15 Jan 2023", desc: "Tata cara tata kelola Jabatan Fungsional berbasis konversi predikat kinerja." },
-            { title: "Peraturan BKN No. 3 Tahun 2023", date: "20 Mar 2023", desc: "Petunjuk teknis pelaksanaan pembinaan dan pengangkatan Jabatan Fungsional." },
-            { title: "Integrasi Sistem Layanan Kepegawaian", date: "01 Feb 2024", desc: "Digitalisasi dan kemudahan pengajuan usulan berkas Jafung secara online." }
-        ];
-
-        function renderAnnouncements() {
-            const container = document.getElementById('announcements-feed-list');
-            if (!container) return;
-            container.innerHTML = announcementsList.map(item => `
-                <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-300 transition">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-bold text-stone-900">${item.title}</h4>
-                        <span class="text-[10px] text-amber-800 font-semibold bg-amber-100/60 px-2 py-0.5 rounded-md">${item.date}</span>
-                    </div>
-                    <p class="text-xs text-stone-600 leading-relaxed">${item.desc}</p>
-                </div>
-            `).join('');
-        }
-
-        // Search Filter Logic
-        window.handleGlobalSearch = function() {
-            const query = document.getElementById('global-search-input').value.toLowerCase();
-            const container = document.getElementById('search-results-container');
-            if (!container) return;
-
-            if (!query.trim()) {
-                container.innerHTML = `
-                    <div class="text-center py-8 text-stone-400 text-xs">
-                        <i class="fa-solid fa-keyboard text-3xl mb-2 block text-stone-300"></i>
-                        Ketik kata kunci untuk mulai mencari di seluruh database SADARI JAFUNG.
-                    </div>`;
-                return;
-            }
-
-            const searchIndex = [
-                { title: 'Kanal 1 - Informasi ASN', desc: 'Dashboard informasi kebutuhan, ketersediaan, dan kondisi jabatan fungsional pada perangkat daerah', action: () => openChannelWithUrl('kanal-1-modal', 'frame-1-iframe', 'frame-1-placeholder', 'https://script.google.com/macros/s/AKfycbw7QAfyGPXdvc81fFSY1gT-elbu9iqsTCRvkh5GJCfvrcq3s7unfHZyj_Bngd2byKHq/exec') },
-                { title: 'Kanal 2 - Layanan Administrasi', desc: 'Untuk pengajuan usulan karier, PAK, dan integrasi Jabatan Fungsional', action: () => openChannelWithUrl('kanal-2-modal', 'frame-2-iframe', 'frame-2-placeholder', 'https://jafungonline-nv.blogspot.com/') },
-                { title: 'Kanal 3 - Data dan Informasi', desc: 'Data Informasi Instansi Pembina', action: () => openChannelWithUrl('kanal-3-modal', 'frame-3-iframe', 'frame-3-placeholder', 'https://lookerstudio.google.com/embed/reporting/3850709a-5a80-4745-88df-da402b0fbc74/page/6gM6F') },
-                { title: 'Peraturan BKN No. 3 Tahun 2023', desc: 'Tata Cara Pengangkatan Jabatan Fungsional', action: () => window.showToast('Mengunduh regulasi BKN No. 3/2023...') },
-                { title: 'PermenPANRB No. 1 Tahun 2023', desc: 'Regulasi tentang Jabatan Fungsional', action: () => window.showToast('Mengunduh PermenPANRB No. 1/2023...') }
-            ];
-
-            const matches = searchIndex.filter(item => item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
-
-            if (matches.length === 0) {
-                container.innerHTML = `<div class="text-center py-6 text-stone-400 text-xs">Tidak ada hasil ditemukan untuk "${query}"</div>`;
-            } else {
-                container.innerHTML = matches.map((m, idx) => `
-                    <div onclick="closeModal('search-modal'); (${m.action})()" class="p-3 rounded-xl bg-stone-50 hover:bg-amber-50/50 border border-stone-200 cursor-pointer flex items-center justify-between transition">
-                        <div>
-                            <h4 class="text-xs font-bold text-stone-900">${m.title}</h4>
-                            <p class="text-[10px] text-stone-500">${m.desc}</p>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-stone-300 text-xs"></i>
-                    </div>
-                `).join('');
-            }
-        };
-
         // Global Keyboard Event
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                ['search-modal', 'berita-info-modal', 'faq-modal', 'kanal-1-modal', 'kanal-2-modal', 'kanal-3-modal'].forEach(window.closeModal);
+                ['berita-info-modal', 'faq-modal', 'search-modal', 'kanal-1-modal', 'kanal-2-modal', 'kanal-3-modal'].forEach(window.closeModal);
+                closeMobileNav();
+            }
+            // Keyboard shortcut Ctrl+K or Cmd+K to open Search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openModal('search-modal');
+                focusSearchInput();
             }
         });
 
