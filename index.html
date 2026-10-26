@@ -876,17 +876,20 @@
                         Satu Data Karier & Informasi Jabatan Fungsional. Platform ekosistem digital terpadu untuk efisiensi manajemen karier, penetapan PAK, dan integrasi data ASN fungsional yang transparan dan akuntabel.
                     </p>
                     <div class="pt-2 flex items-center gap-3">
-                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Facebook">
+                        <a href="https://web.facebook.com/bkpsdmkabkarangasem" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Facebook">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Instagram">
+                        <a href="https://www.instagram.com/bkpsdm.karangasemkab" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="YouTube">
+                        <a href="https://www.youtube.com/@bkpsdm_karangasemkab" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="YouTube">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
-                        <a href="mailto:info@karangasemkab.go.id" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Email Kami">
+                        <a href="mailto:bkpsdm@gws.karangasemkab.go.id" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Email Kami">
                             <i class="fa-regular fa-envelope"></i>
+                        </a>
+                        <a href="https://bkpsdm.karangasemkab.go.id/" target="_blank" rel="noopener" class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-[#c8a66b] hover:text-[#08172b] text-slate-300 border border-slate-700/60 transition flex items-center justify-center text-xs" title="Website">
+                            <i class="fas fa-globe"></i>
                         </a>
                     </div>
                 </div>
@@ -1053,8 +1056,19 @@
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
-            <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-3" id="faq-accordion-container">
-                <!-- FAQ dynamic items -->
+            <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4">
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
+                    <label for="faq-search-input" class="block text-xs font-bold text-slate-700 mb-2">Cari pertanyaan atau topik bantuan</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input id="faq-search-input" type="search" oninput="filterFAQ(this.value)" placeholder="Contoh: PAK, Bezzeting, kanal, data tidak tampil..." class="w-full rounded-xl border border-slate-200 bg-white py-3 pl-10 pr-3 text-sm text-slate-800 outline-none focus:border-[#c8a66b] focus:ring-2 focus:ring-[#c8a66b]/20" autocomplete="off" />
+                    </div>
+                    <p class="mt-2 text-[11px] text-slate-500">Pilih pertanyaan untuk membaca jawaban. Informasi pengajuan dan persyaratan akhir tetap mengikuti ketentuan resmi yang berlaku.</p>
+                </div>
+                <div id="faq-result-count" class="text-[11px] font-semibold text-slate-500" aria-live="polite"></div>
+                <div class="space-y-3" id="faq-accordion-container" aria-live="polite">
+                    <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-500">Menyiapkan panduan bantuan...</div>
+                </div>
             </div>
             <div class="p-4 bg-stone-50 border-t border-stone-200 flex justify-end">
                 <button onclick="closeModal('faq-modal')" class="px-4 py-2 rounded-xl bg-amber-900 text-white font-bold text-xs">Tutup</button>
@@ -1186,6 +1200,11 @@
         window.openModal = function(modalId) {
             const modal = document.getElementById(modalId);
             if (!modal) return;
+            if (modalId === 'faq-modal') {
+                const faqSearch = document.getElementById('faq-search-input');
+                if (faqSearch) faqSearch.value = '';
+                renderFAQ('');
+            }
             modal.classList.remove('hidden');
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
             document.body.style.overflow = 'hidden';
@@ -1264,12 +1283,23 @@
             }
         };
 
-        // FAQ Data
+        // FAQ Data: panduan penggunaan portal SADARI JAFUNG
         const faqList = [
-            { q: "Apa itu Portal SADARI JAFUNG?", a: "SADARI JAFUNG (Satu Data Karier dan Informasi Jabatan Fungsional) adalah portal terpadu Pemerintah Kabupaten Karangasem yang mengintegrasikan layanan karier Jabatan Fungsional, informasi regulasi, serta peta Bezzeting secara digital." },
-            { q: "Bagaimana cara melakukan pengajuan layanan administrasi Jafung?", a: "Klik pada Kanal 1 atau Kanal 2 di halaman utama untuk mengakses form usulan online, PAK, dan pengajuan administratif kepegawaian." },
-            { q: "Bagaimana sistem perhitungan Angka Kredit Jafung saat ini?", a: "Sesuai Peraturan MenPAN-RB No. 1 Tahun 2023, Angka Kredit tidak lagi dihitung dengan butir kegiatan manual, melainkan dikonversi langsung dari Predikat Kinerja Periodik SKP." },
-            { q: "Di mana saya bisa melihat peta ketersediaan Bezzeting?", a: "Peta ketersediaan jabatan fungsional dapat diakses melalui Kanal 3 (Data dan Statistik Bezzeting)." }
+            { category: 'Umum', q: 'Apa itu Portal SADARI JAFUNG?', a: 'SADARI JAFUNG (Satu Data Karier & Informasi Jabatan Fungsional) merupakan portal terpadu Pemerintah Kabupaten Karangasem untuk membantu pengguna mengakses kanal layanan karier Jabatan Fungsional, informasi ASN fungsional, regulasi, berita, dan informasi kebutuhan jabatan dalam satu tempat.' },
+            { category: 'Navigasi', q: 'Bagaimana cara menggunakan portal ini?', a: 'Mulai dari halaman Beranda, lalu pilih kartu Kanal Layanan sesuai kebutuhan. Menu navigasi di bagian atas membantu berpindah ke Layanan Karier, Data ASN Fungsional, Informasi, Kontak & Lokasi, serta Pusat Bantuan FAQ. Pada ponsel, tekan tombol menu bergambar tiga garis untuk membuka navigasi.' },
+            { category: 'Kanal Layanan', q: 'Apa fungsi Kanal 1?', a: 'Kanal 1 membuka dashboard informasi kebutuhan, ketersediaan, dan kondisi Jabatan Fungsional pada perangkat daerah. Gunakan kanal ini untuk melihat informasi yang disediakan pada dashboard. Jika data tidak muncul, periksa koneksi internet dan coba muat ulang halaman.' },
+            { category: 'Kanal Layanan', q: 'Apa fungsi Kanal 2?', a: 'Kanal 2 mengarah ke layanan administrasi Jabatan Fungsional, termasuk informasi terkait usulan karier dan Penetapan Angka Kredit (PAK). Baca petunjuk pada halaman layanan tujuan dan pastikan data serta dokumen yang diminta telah disiapkan sebelum mengirim pengajuan.' },
+            { category: 'Data & Statistik', q: 'Di mana saya dapat melihat data ASN fungsional?', a: 'Bagian Data ASN Fungsional berada pada dashboard halaman utama. Kanal 4 juga disediakan untuk informasi dan statistik ASN fungsional. Tampilan data dapat bergantung pada ketersediaan sumber data dan koneksi ke layanan terkait.' },
+            { category: 'Data & Statistik', q: 'Apa yang dimaksud dengan Bezzeting pada portal?', a: 'Bezzeting berkaitan dengan informasi kebutuhan, ketersediaan, dan kondisi jabatan pada perangkat daerah. Gunakan dashboard atau kanal yang menyediakan informasi tersebut sebagai bahan pemantauan. Untuk penetapan kebutuhan atau keputusan kepegawaian, tetap rujuk data dan ketentuan resmi dari instansi berwenang.' },
+            { category: 'PAK & Karier', q: 'Bagaimana memahami informasi PAK pada portal?', a: 'PAK adalah Penetapan Angka Kredit. Portal menyediakan akses ke kanal administrasi dan informasi terkait PAK. Ikuti instruksi pada layanan tujuan, periksa kesesuaian data kepegawaian dan dokumen pendukung, serta konfirmasikan persyaratan terbaru kepada pengelola kepegawaian apabila terdapat hal yang belum jelas.' },
+            { category: 'PAK & Karier', q: 'Bagaimana perhitungan angka kredit Jabatan Fungsional?', a: 'Ketentuan angka kredit mengikuti peraturan yang berlaku untuk masing-masing Jabatan Fungsional dan mekanisme pengelolaan kinerja ASN. Gunakan bagian Regulasi & Kebijakan pada portal untuk menelusuri informasi yang tersedia. Jangan menjadikan ringkasan FAQ sebagai pengganti peraturan resmi atau arahan instansi pembina.' },
+            { category: 'Regulasi', q: 'Di mana saya menemukan regulasi dan petunjuk teknis?', a: 'Pilih Kanal 5 – Regulasi & Kebijakan. Baca judul, ruang lingkup, tanggal, dan status keberlakuan dokumen sebelum digunakan. Jika dokumen yang diperlukan belum tersedia atau statusnya meragukan, konfirmasikan kepada BKPSDM atau instansi pembina terkait.' },
+            { category: 'Informasi', q: 'Bagaimana membaca berita dan informasi terbaru?', a: 'Bagian Berita & Informasi berada di sisi kanan dashboard halaman utama. Tunggu hingga konten selesai dimuat. Gunakan tombol muat ulang pada bagian tersebut jika tampilan tidak diperbarui, kemudian periksa sumber dan tanggal informasi.' },
+            { category: 'Teknis', q: 'Mengapa dashboard atau kanal layanan tidak tampil?', a: 'Pastikan koneksi internet stabil, tunggu beberapa saat, lalu muat ulang halaman. Jika tetap bermasalah, coba buka portal melalui peramban terbaru atau perangkat lain. Sebagian layanan berasal dari sistem eksternal sehingga ketersediaannya dapat berbeda dari halaman utama portal.' },
+            { category: 'Teknis', q: 'Apa yang harus dilakukan jika tautan layanan tidak bisa dibuka?', a: 'Buka kembali kanal yang dituju dan periksa apakah halaman eksternal dapat diakses. Jika masih gagal, catat nama kanal, waktu kejadian, dan pesan kesalahan yang terlihat, lalu sampaikan informasi tersebut kepada pengelola portal atau petugas kepegawaian agar dapat ditindaklanjuti.' },
+            { category: 'Pencarian', q: 'Bagaimana menggunakan fitur pencarian portal?', a: 'Tekan ikon kaca pembesar pada header, masukkan kata kunci seperti PAK, Bezzeting, regulasi, berita, atau nama kanal, kemudian pilih hasil yang paling sesuai. Untuk mencari jawaban di FAQ, gunakan kolom pencarian pada jendela Pusat Bantuan.' },
+            { category: 'Keamanan Data', q: 'Apakah saya perlu berhati-hati saat mengisi layanan?', a: 'Ya. Masukkan data hanya pada layanan resmi yang dibuka melalui portal, periksa kembali ketepatan data sebelum mengirim, dan jangan membagikan kata sandi, kode verifikasi, atau data pribadi kepada pihak yang tidak berwenang. Pastikan perangkat yang digunakan aman, terutama saat memakai perangkat bersama.' },
+            { category: 'Dukungan', q: 'Ke mana saya harus bertanya jika jawaban tidak ditemukan?', a: 'Gunakan informasi Kontak & Lokasi pada bagian bawah portal untuk mencari jalur komunikasi yang tersedia/pada sosial media yang tersedia bagian kiri bawah/kunjungi https://klik-asn.bkpsdmkarangasemkab.web.id/#form-konsultasi. Saat meminta bantuan, jelaskan kanal yang digunakan, tujuan layanan, langkah yang sudah dilakukan, serta pesan kesalahan bila ada. Hindari mengirimkan data pribadi yang tidak diperlukan.' }
         ];
 
         // Search Index Items (Database Pencarian Portal SADARI JAFUNG)
@@ -1529,28 +1559,51 @@
             }
         };
 
-        function renderFAQ() {
+        function renderFAQ(query = '') {
             const container = document.getElementById('faq-accordion-container');
+            const count = document.getElementById('faq-result-count');
             if (!container) return;
-            container.innerHTML = faqList.map((item, idx) => `
-                <div class="rounded-xl border border-stone-200 bg-stone-50 overflow-hidden">
-                    <button onclick="toggleFAQ(${idx})" class="w-full p-3.5 text-left text-xs font-bold text-stone-900 flex items-center justify-between hover:bg-stone-100 transition">
-                        <span>Q${idx+1}. ${item.q}</span>
-                        <i id="faq-icon-${idx}" class="fa-solid fa-chevron-down text-stone-400 text-xs transition-transform"></i>
-                    </button>
-                    <div id="faq-ans-${idx}" class="hidden p-3.5 pt-0 text-xs text-stone-600 leading-relaxed border-t border-stone-200/60 bg-white">
-                        ${item.a}
-                    </div>
-                </div>
-            `).join('');
+            const term = String(query || '').trim().toLocaleLowerCase('id');
+            const matches = faqList.filter(item => `${item.q} ${item.a} ${item.category}`.toLocaleLowerCase('id').includes(term));
+            if (count) count.textContent = `${matches.length} pertanyaan ditemukan`;
+            if (!matches.length) {
+                container.innerHTML = `<div class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center"><div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-slate-400 shadow-sm"><i class="fa-solid fa-magnifying-glass text-lg"></i></div><p class="font-bold text-slate-800 text-sm">Pertanyaan belum ditemukan</p><p class="mt-1 text-xs text-slate-500">Coba kata kunci lain, misalnya “Kanal 2”, “PAK”, “data”, atau “regulasi”.</p></div>`;
+                return;
+            }
+            container.innerHTML = matches.map((item, idx) => {
+                const originalIndex = faqList.indexOf(item);
+                const expanded = idx === 0;
+                return `
+                    <article class="faq-item rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm transition hover:border-[#c8a66b]/70" data-faq-index="${originalIndex}">
+                        <button type="button" onclick="toggleFAQ(${originalIndex})" aria-expanded="${expanded ? 'true' : 'false'}" aria-controls="faq-ans-${originalIndex}" class="w-full p-4 sm:p-4 text-left flex items-start gap-3 hover:bg-slate-50 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#c8a66b]">
+                            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#edf3fa] text-[#17395f] text-xs font-extrabold">${String(idx + 1).padStart(2, '0')}</span>
+                            <span class="min-w-0 flex-1"><span class="mb-1 inline-flex rounded-md bg-[#f5f0e6] px-2 py-1 text-[9px] font-extrabold uppercase tracking-wider text-[#785b2c]">${item.category}</span><span class="block text-sm font-bold leading-relaxed text-slate-800">${item.q}</span></span>
+                            <i id="faq-icon-${originalIndex}" class="fa-solid fa-chevron-down mt-2 text-xs text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}"></i>
+                        </button>
+                        <div id="faq-ans-${originalIndex}" class="${expanded ? '' : 'hidden'} border-t border-slate-100 bg-slate-50/70 px-4 pb-4 pt-3 pl-14 text-xs sm:text-sm leading-7 text-slate-600" role="region">${item.a}</div>
+                    </article>`;
+            }).join('');
         }
+
+        window.filterFAQ = function(query) {
+            renderFAQ(query);
+        };
 
         window.toggleFAQ = function(idx) {
             const ans = document.getElementById(`faq-ans-${idx}`);
             const icon = document.getElementById(`faq-icon-${idx}`);
+            const button = icon ? icon.closest('button') : null;
             if (ans && icon) {
-                ans.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
+                const willOpen = ans.classList.contains('hidden');
+                // Accordion behavior: keep the help panel tidy by opening one answer at a time.
+                document.querySelectorAll('#faq-accordion-container [id^="faq-ans-"]').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('#faq-accordion-container [id^="faq-icon-"]').forEach(el => el.classList.remove('rotate-180'));
+                document.querySelectorAll('#faq-accordion-container button[aria-controls^="faq-ans-"]').forEach(el => el.setAttribute('aria-expanded', 'false'));
+                if (willOpen) {
+                    ans.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                    if (button) button.setAttribute('aria-expanded', 'true');
+                }
             }
         };
 
