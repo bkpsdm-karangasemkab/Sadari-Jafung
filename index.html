@@ -603,12 +603,12 @@
 
         <!-- ================= MAIN DASHBOARD (TRIPLE COLUMN SECTION) ================= -->
         <section class="w-full max-w-[98%] mx-auto px-3 sm:px-6 mb-16">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
 
                 <!-- LEFT COLUMN: DATA ASN FUNGSIONAL - URL EMBED -->
-                <div id="data-asn" class="lg:col-span-4 min-w-0">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+                <div id="data-asn" class="lg:col-span-4 min-w-0 flex flex-col h-full">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3 shrink-0">
                             <div class="w-9 h-9 shrink-0 rounded-xl bg-[#EAF1F8] text-[#17395F] flex items-center justify-center">
                                 <i class="fa-solid fa-chart-column"></i>
                             </div>
@@ -618,13 +618,8 @@
                             </div>
                         </div>
 
-                        <!--
-                          CARA MEMASANG DATA ASN:
-                          1. Cari konstanta DATA_ASN_FUNGSIONAL_URL di bagian script utama.
-                          2. Tempel URL halaman data Anda di antara tanda kutip.
-                          3. Simpan file. Tidak perlu mengubah struktur iframe ini.
-                        -->
-                        <div id="data-asn-embed-shell" class="relative w-full rounded-xl overflow-hidden bg-slate-50 border border-slate-200">
+                        <!-- Shell Embed Iframe -->
+                        <div id="data-asn-embed-shell" class="relative w-full flex-1 rounded-xl overflow-hidden bg-slate-50 border border-slate-200 min-h-[560px] lg:min-h-[620px]">
                             <iframe
                                 id="data-asn-embed-frame"
                                 title="Tampilan Data ASN Fungsional"
@@ -632,8 +627,7 @@
                                 loading="lazy"
                                 referrerpolicy="strict-origin-when-cross-origin"
                                 allowfullscreen
-                                class="block w-full border-0 bg-white"
-                                style="height: min(72vh, 760px); min-height: 520px;"
+                                class="block w-full h-full border-0 bg-white"
                             ></iframe>
                             <div id="data-asn-embed-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-center p-5 bg-slate-50">
                                 <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-4 text-[#17395F]">
@@ -647,276 +641,154 @@
                 </div>
 
                 <!-- MIDDLE COLUMN: ABOUT CARD / LOGO CENTER -->
-                <div class="lg:col-span-4">
-                    <div class="bg-gradient-to-b from-amber-50/60 via-white to-amber-50/40 rounded-2xl p-6 border border-amber-900/10 shadow-sm text-center flex flex-col justify-between h-full min-h-[580px] relative overflow-hidden">
+                <div class="lg:col-span-4 flex flex-col h-full">
+                    <div class="bg-gradient-to-b from-amber-50/60 via-white to-amber-50/40 rounded-2xl p-5 sm:p-6 border border-amber-900/10 shadow-sm text-center flex flex-col justify-start h-full min-h-[560px] lg:min-h-[620px] relative overflow-hidden">
                         <!-- Decorative Balinese Temple Sillouette Bottom Background -->
                         <div class="absolute inset-x-0 bottom-0 h-24 bg-contain bg-bottom bg-repeat-x opacity-10 pointer-events-none" style="background-image: url('https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png');"></div>
 
-                        <div>
+                        <div class="flex-1 flex flex-col justify-start pt-2">
                             <!-- Big Logo Brand -->
-                            <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl p-2 shadow-md border border-amber-100 flex items-center justify-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 bg-white rounded-2xl p-2 shadow-md border border-amber-100 flex items-center justify-center shrink-0">
                                 <img src="https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png" alt="SADARI JAFUNG Emblem" class="w-full h-full object-contain"/>
                             </div>
 
                             <h3 class="font-black text-stone-900 text-xl tracking-tight mb-1">SADARI JAFUNG</h3>
-                            <p class="text-xs text-amber-900/80 font-bold uppercase tracking-wider mb-6">Karangasem Agung Digital Portal</p>
+                            <p class="text-xs text-amber-900/80 font-bold uppercase tracking-wider mb-4">Karangasem Agung Digital Portal</p>
 
-                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6 text-justify">
-                                SADARI JAFUNG adalah portal layanan digital yang hadir untuk mempermudah akses informasi, layanan, dan pengelolaan <strong class="text-stone-900">Jabatan Fungsional</strong> di lingkungan Pemerintah Kabupaten Karangasem.
-                            </p>
+                            <!-- Uraian Lengkap SADARI JAFUNG -->
+                            <div class="space-y-3 text-xs sm:text-sm text-stone-600 leading-relaxed text-justify mb-5 overflow-y-auto max-h-[300px] lg:max-h-none pr-1">
+                                <p>
+                                    <strong class="text-stone-900">SADARI JAFUNG</strong> (Satu Data Karier & Informasi Jabatan Fungsional) merupakan portal ekosistem digital terpadu Pemerintah Kabupaten Karangasem yang dirancang untuk mengintegrasikan seluruh layanan administrasi kepegawaian dan informasi karier ASN Fungsional secara terpusat.
+                                </p>
 
-                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-8 text-justify">
-                                Kami berkomitmen untuk memberikan layanan yang <strong class="text-stone-900">cepat, mudah, transparan,</strong> dan <strong class="text-stone-900">terintegrasi</strong>, guna mendukung profesionalisme ASN serta peningkatan kualitas pelayanan publik.
-                            </p>
+                                <p>
+                                    Inovasi ini bertujuan untuk memangkas birokrasi pengusulan Angka Kredit (PAK), kenaikan pangkat, penyelarasan formasi (Bezzeting), serta mempermudah pemantauan peta ketersediaan Jabatan Fungsional di setiap Perangkat Daerah secara akurat dan transparan.
+                                </p>
+
+                                <p>
+                                    Melalui integrasi data berbasis <em>real-time</em> dan regulasi MenPANRB terbaru, SADARI JAFUNG berkomitmen mendorong transformasi digital manajemen SDM Aparatur menuju pencapaian ASN yang profesional, akuntabel, dan berdaya saing tinggi.
+                                </p>
+                            </div>
 
                             <!-- Feature Icons 4 Grid -->
-                            <div class="grid grid-cols-4 gap-2 mb-8">
-                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-2xl flex flex-col items-center">
+                            <div class="grid grid-cols-4 gap-2 mb-4 mt-auto">
+                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-sm flex flex-col items-center">
                                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs mb-1">
                                         <i class="fa-solid fa-hand-pointer"></i>
                                     </div>
                                     <span class="text-[9px] font-bold text-stone-700 leading-tight">Mudah Diakses</span>
                                 </div>
-                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-2xl flex flex-col items-center">
+                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-sm flex flex-col items-center">
                                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs mb-1">
                                         <i class="fa-solid fa-clock"></i>
                                     </div>
                                     <span class="text-[9px] font-bold text-stone-700 leading-tight">Cepat & Tepat</span>
                                 </div>
-                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-2xl flex flex-col items-center">
+                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-sm flex flex-col items-center">
                                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs mb-1">
                                         <i class="fa-solid fa-shield-halved"></i>
                                     </div>
-                                    <span class="text-[9px] font-bold text-stone-700 leading-tight">Transparan & Akuntabel</span>
+                                    <span class="text-[9px] font-bold text-stone-700 leading-tight">Transparan</span>
                                 </div>
-                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-2xl flex flex-col items-center">
+                                <div class="bg-white p-2.5 rounded-xl border border-stone-100 shadow-sm flex flex-col items-center">
                                     <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs mb-1">
                                         <i class="fa-solid fa-box-archive"></i>
                                     </div>
-                                    <span class="text-[9px] font-bold text-stone-700 leading-tight">Terintegrasi Satu Pintu</span>
+                                    <span class="text-[9px] font-bold text-stone-700 leading-tight">Terintegrasi</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Action Button -->
-                        <div class="relative z-10">
-                            <button onclick="openModal('announcements-modal')" class="gold-button w-full py-3 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2">
+                        <div class="relative z-10 shrink-0">
+                            <button onclick="openModal('berita-info-modal')" class="gold-button w-full py-3 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2">
                                 <span>Pelajari Lebih Lanjut</span> <i class="fa-solid fa-chevron-right text-xs"></i>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT COLUMN: BERITA & REGULASI -->
-                <div class="lg:col-span-4 space-y-6">
-
-                    <!-- BERITA TERBARU JAFUNG: LIVE RSS FEED -->
-                    <div id="berita" class="news-live-panel overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5">
-                        <div class="relative overflow-hidden bg-gradient-to-br from-[#0a1d34] via-[#123457] to-[#1c4770] px-5 py-5 text-white">
-                            <div class="absolute -right-8 -top-10 h-36 w-36 rounded-full border border-white/10"></div>
-                            <div class="absolute -right-2 -top-4 h-24 w-24 rounded-full border border-amber-200/20"></div>
-                            <div class="relative flex items-start justify-between gap-3">
+                <!-- RIGHT COLUMN: EMBEDDED BERITA & INFORMASI JAFUNG (KEMBALI DITAMPILKAN & SIMETRIS) -->
+                <div id="berita" class="lg:col-span-4 min-w-0 flex flex-col h-full">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                        <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3 shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 shrink-0 rounded-xl bg-[#EAF1F8] text-[#17395F] flex items-center justify-center">
+                                    <i class="fa-solid fa-newspaper"></i>
+                                </div>
                                 <div class="min-w-0">
-                                    <div class="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-amber-200">
-                                        <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-300"></span> Live update
-                                    </div>
-                                    <h3 class="text-lg font-extrabold tracking-tight">Berita Terbaru Jafung</h3>
-                                    <p class="mt-1 max-w-xs text-xs leading-relaxed text-slate-200">Informasi jabatan fungsional terkini dari sumber berita online.</p>
-                                </div>
-                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-amber-200 shadow-inner">
-                                    <i class="fa-solid fa-satellite-dish text-lg"></i>
+                                    <h3 class="font-bold text-slate-900 text-base">Berita & Informasi</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Informasi terkini Jabatan Fungsional</p>
                                 </div>
                             </div>
-                            <div class="relative mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-white/15 pt-3">
-                                <span id="jafung-news-status" class="text-[10px] text-slate-200" role="status" aria-live="polite">Menghubungkan ke sumber berita…</span>
-                                <button type="button" onclick="refreshJafungNews(true)" class="inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold text-white transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-amber-200" aria-label="Perbarui berita sekarang">
-                                    <i id="jafung-news-refresh-icon" class="fa-solid fa-rotate-right"></i> Perbarui
-                                </button>
-                            </div>
+                            <button onclick="reloadBeritaFrame()" class="p-2 text-slate-400 hover:text-[#17395F] transition rounded-lg" title="Muat Ulang Berita">
+                                <i class="fa-solid fa-rotate-right text-sm"></i>
+                            </button>
                         </div>
-                        <div class="p-3 sm:p-4">
-                            <div id="jafung-news-list" class="space-y-2" aria-live="polite">
-                                <div class="animate-pulse rounded-xl border border-slate-100 p-4">
-                                    <div class="mb-3 h-3 w-1/3 rounded bg-slate-100"></div><div class="mb-2 h-4 w-full rounded bg-slate-100"></div><div class="h-3 w-2/3 rounded bg-slate-100"></div>
+
+                        <!-- Embedded Berita Iframe -->
+                        <div id="berita-jafung-embed-shell" class="relative w-full flex-1 rounded-xl overflow-hidden bg-slate-50 border border-slate-200 min-h-[560px] lg:min-h-[620px]">
+                            <iframe
+                                id="berita-jafung-embed-frame"
+                                title="Tampilan Berita & Informasi Jafung"
+                                src="https://script.google.com/macros/s/AKfycbx1QSeAJdBRSQXUSUlMJGLRQtnuHupfFcQBWJrl0RP1qA8JndZsfOVlK9Y3Azyd7KITlg/exec"
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
+                                onload="window.hideChannelPlaceholder('berita-jafung-embed-placeholder')"
+                                class="block w-full h-full border-0 bg-white"
+                            ></iframe>
+                            <div id="berita-jafung-embed-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-center p-5 bg-slate-50">
+                                <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-4 text-[#17395F]">
+                                    <i class="fa-solid fa-spinner animate-spin text-xl"></i>
                                 </div>
-                                <div class="animate-pulse rounded-xl border border-slate-100 p-4">
-                                    <div class="mb-3 h-3 w-1/4 rounded bg-slate-100"></div><div class="mb-2 h-4 w-5/6 rounded bg-slate-100"></div><div class="h-3 w-1/2 rounded bg-slate-100"></div>
-                                </div>
-                            </div>
-                            <div class="mt-3 flex items-center justify-between gap-3 border-t border-slate-100 pt-3">
-                                <p class="text-[10px] leading-relaxed text-slate-500"><i class="fa-solid fa-circle-info mr-1 text-slate-400"></i> Berita berasal dari hasil pencarian Google News; verifikasi isi pada sumber aslinya.</p>
-                                <a href="https://news.google.com/search?q=jabatan%20fungsional&hl=id&gl=ID&ceid=ID%3Aid" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[10px] font-bold text-blue-900 transition hover:text-amber-700">Semua berita <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+                                <h4 class="font-bold text-slate-800 text-sm">Memuat Berita & Informasi...</h4>
+                                <p class="mt-2 max-w-xs text-xs leading-relaxed text-slate-500">Mohon tunggu sebentar, sedang menghubungkan ke penyedia berita online.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- REGULASI & KEBIJAKAN -->
-                    <div id="regulasi" class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
-                        <div class="flex items-center justify-between mb-4 border-b border-stone-100 pb-3">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-scroll text-amber-800 text-lg"></i>
-                                <h3 class="font-bold text-stone-900 text-base">Regulasi</h3>
-                            </div>
-                            <a href="javascript:void(0)" onclick="openModal('announcements-modal')" class="text-xs font-semibold text-amber-800 hover:underline flex items-center gap-1">
-                                Lihat Semua <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </a>
-                        </div>
-
-                        <!-- Regulation 1 -->
-                        <div class="p-3 rounded-xl bg-stone-50 hover:bg-amber-50/50 transition border border-stone-100 mb-3 flex items-start gap-3 group">
-                            <div class="w-9 h-9 rounded-lg bg-amber-900 text-white flex items-center justify-center text-sm shrink-0 mt-0.5">
-                                <i class="fa-solid fa-file-pdf"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h4 class="text-xs font-bold text-stone-900 group-hover:text-amber-800 transition leading-snug">Peraturan BKN No. 3 Tahun 2023</h4>
-                                <p class="text-[10px] text-stone-500 mt-0.5">Tentang Tata Cara Pengangkatan Jabatan Fungsional</p>
-                                <p class="text-[9px] text-stone-400 mt-1">12 Sep 2023</p>
-                            </div>
-                            <button onclick="window.showToast('Mengunduh dokumen Regulasi BKN No. 3/2023...')" class="p-2 text-stone-400 hover:text-amber-800 transition">
-                                <i class="fa-solid fa-download text-sm"></i>
-                            </button>
-                        </div>
-
-                        <!-- Regulation 2 -->
-                        <div class="p-3 rounded-xl bg-stone-50 hover:bg-amber-50/50 transition border border-stone-100 mb-3 flex items-start gap-3 group">
-                            <div class="w-9 h-9 rounded-lg bg-amber-900 text-white flex items-center justify-center text-sm shrink-0 mt-0.5">
-                                <i class="fa-solid fa-file-pdf"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h4 class="text-xs font-bold text-stone-900 group-hover:text-amber-800 transition leading-snug">PermenPANRB No. 1 Tahun 2023</h4>
-                                <p class="text-[10px] text-stone-500 mt-0.5">Tentang Jabatan Fungsional</p>
-                                <p class="text-[9px] text-stone-400 mt-1">05 Jan 2023</p>
-                            </div>
-                            <button onclick="window.showToast('Mengunduh dokumen PermenPANRB No. 1/2023...')" class="p-2 text-stone-400 hover:text-amber-800 transition">
-                                <i class="fa-solid fa-download text-sm"></i>
-                            </button>
-                        </div>
-
-                        <!-- Regulation 3 -->
-                        <div class="p-3 rounded-xl bg-stone-50 hover:bg-amber-50/50 transition border border-stone-100 flex items-start gap-3 group">
-                            <div class="w-9 h-9 rounded-lg bg-amber-900 text-white flex items-center justify-center text-sm shrink-0 mt-0.5">
-                                <i class="fa-solid fa-file-pdf"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h4 class="text-xs font-bold text-stone-900 group-hover:text-amber-800 transition leading-snug">Keputusan Kepala BKN No. 87 Tahun 2022</h4>
-                                <p class="text-[10px] text-stone-500 mt-0.5">Tentang Pedoman Penilaian Kinerja Jabatan Fungsional</p>
-                                <p class="text-[9px] text-stone-400 mt-1">28 Nov 2022</p>
-                            </div>
-                            <button onclick="window.showToast('Mengunduh dokumen Keputusan Kepala BKN No. 87/2022...')" class="p-2 text-stone-400 hover:text-amber-800 transition">
-                                <i class="fa-solid fa-download text-sm"></i>
-                            </button>
-                        </div>
-
-                    </div>
-
                 </div>
 
             </div>
         </section>
 
-    </main>
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="bg-stone-900 text-stone-300 text-xs py-8 px-3 sm:px-6 border-t border-amber-900/20">
-        <div class="w-full max-w-[98%] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <!-- Left Branding -->
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-white/10 p-1 flex items-center justify-center border border-white/20">
-                    <img src="https://cdn.phototourl.com/member/2026-10-10-254d6ed3-e2f9-4f94-a8b3-7191ef9415d9.png" alt="SADARI JAFUNG Logo" class="w-full h-full object-contain"/>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white text-sm">SADARI JAFUNG</h4>
-                    <p class="text-[10px] text-stone-400">Portal Layanan Fungsional Kepegawaian Digital</p>
-                </div>
-            </div>
-
-            <!-- Center Slogan -->
-            <p class="text-center text-stone-400 text-xs max-w-md">
-                Bersama Membangun ASN Profesional<br/>untuk Karangasem yang Lebih Baik
-            </p>
-
-            <!-- Right Socials & Emblem -->
-            <div class="flex items-center gap-4">
-                <div class="flex items-center space-x-3 text-stone-400 text-base">
-		<a href="https://www.youtube.com/@bkpsdm_karangasemkab" target="_blank" rel="noopener noreferrer" aria-label="YouTube BKPSDM Karangasem" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/bkpsdm.karangasemkab/" target="_blank" rel="noopener noreferrer" aria-label="Instagram BKPSDM Karangasem" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://web.facebook.com/bkpsdmkabkarangasem/" target="_blank" rel="noopener noreferrer" aria-label="Facebook BKPSDM Karangasem" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@bkpsdm_kabkarangasem" target="_blank" rel="noopener noreferrer" aria-label="Tiktok BKPSDM Karangasem" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"><i class="fab fa-tiktok"></i></a>
-                <a href="https://bkpsdm.karangasemkab.go.id/" target="_blank" rel="noopener noreferrer" aria-label="Website BKPSDM Karangasem" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"><i class="fas fa-globe"></i></a>
-                </div>
-                <div class="h-6 w-px bg-stone-700"></div>
-                <div class="flex items-center gap-2">
-                    <div class="text-right">
-                        <p class="text-[10px] font-bold text-white leading-tight">Pemerintah Kabupaten</p>
-                        <p class="text-[10px] text-amber-400 font-semibold leading-tight">Karangasem</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright Bottom -->
-        <div class="w-full max-w-[98%] mx-auto mt-6 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] text-stone-500">
-            <p>© 2025 Sadari Jafung. Semua Hak Dilindungi.</p>
-            <div class="flex items-center space-x-4">
-                <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-stone-300">Syarat & Ketentuan</a>
-                <span>•</span>
-                <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-stone-300">Kebijakan Privasi</a>
-                <span>•</span>
-                <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-stone-300">Kontak</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ================= MODALS & POPUPS ================= -->
-
-    <!-- 1. SEARCH MODAL -->
-    <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-slate-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
-            <div class="p-4 border-b border-slate-200 flex items-center gap-3 bg-slate-50">
-                <i class="fa-solid fa-magnifying-glass text-amber-800 text-lg"></i>
-                <input type="text" id="global-search-input" onkeyup="handleGlobalSearch()" placeholder="Ketik kata kunci pencarian (misal: PAK, Angka Kredit, Kenaikan Pangkat, SOP...)" class="w-full bg-transparent text-stone-900 text-sm focus:outline-none placeholder-slate-400 font-medium"/>
-                <button onclick="closeModal('search-modal')" class="p-2 text-slate-400 hover:text-slate-700 transition rounded-lg">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-            <div id="search-results-container" class="p-4 overflow-y-auto flex-1 space-y-3">
-                <div class="text-center py-8 text-slate-400 text-xs">
-                    <i class="fa-solid fa-keyboard text-3xl mb-2 block text-slate-300"></i>
-                    Ketik kata kunci untuk mulai mencari di seluruh database SADARI JAFUNG.
-                </div>
-            </div>
-            <div class="p-3 bg-stone-100 text-slate-500 text-[10px] flex justify-between items-center border-t border-slate-200">
-                <span>Pencarian Otomatis SADARI JAFUNG</span>
-                <span class="bg-slate-200 px-2 py-0.5 rounded text-slate-600">Esc untuk tutup</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. ANNOUNCEMENTS / PENGUMUMAN MODAL -->
-    <div id="announcements-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="p-4 sm:p-6 border-b border-stone-200 bg-stone-50 flex items-center justify-between">
+    <!-- 2. ANNOUNCEMENTS / PENGUMUMAN MODAL (BERITA & INFORMASI EMBED) -->
+    <div id="berita-info-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-5xl h-[85vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+            <div class="p-4 sm:p-5 border-b border-stone-200 bg-stone-50 flex items-center justify-between shrink-0">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-bullhorn"></i>
+                    <div class="w-10 h-10 rounded-2xl bg-[#17395f] text-amber-200 flex items-center justify-center text-lg shadow-sm">
+                        <i class="fa-solid fa-newspaper"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg text-stone-900">Pusat Informasi & Pengumuman BKN</h3>
-                        <p class="text-xs text-stone-500">Berita Kebijakan Jabatan Fungsional Terbaru</p>
+                        <h3 class="font-bold text-base sm:text-lg text-stone-900">Informasi & Berita Jabatan Fungsional</h3>
+                        <p class="text-xs text-stone-500">Kumpulan berita, regulasi, dan petunjuk teknis kepegawaian jafung</p>
                     </div>
                 </div>
-                <button onclick="closeModal('announcements-modal')" class="p-2 text-stone-400 hover:text-stone-700 transition rounded-xl">
+                <button onclick="closeModal('berita-info-modal')" class="p-2 text-stone-400 hover:text-stone-700 transition rounded-xl">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
-            <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4">
-                <div id="announcements-feed-list" class="space-y-3">
-                    <!-- Dynamic Items -->
+            <div class="relative flex-1 w-full bg-slate-50">
+                <iframe
+                    id="berita-modal-iframe"
+                    title="Informasi Berita Jafung Modal"
+                    src="https://script.google.com/macros/s/AKfycbx1QSeAJdBRSQXUSUlMJGLRQtnuHupfFcQBWJrl0RP1qA8JndZsfOVlK9Y3Azyd7KITlg/exec"
+                    loading="lazy"
+                    allowfullscreen
+                    onload="window.hideChannelPlaceholder('berita-modal-placeholder')"
+                    class="block w-full h-full border-0 bg-white"
+                ></iframe>
+                <div id="berita-modal-placeholder" class="absolute inset-0 bg-[#0d1f36] text-slate-200 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <div class="w-12 h-12 rounded-2xl bg-[#17395f] border border-[#c8a66b]/30 flex items-center justify-center mb-3 shadow-lg">
+                        <i class="fa-solid fa-circle-notch text-2xl text-[#c8a66b] animate-spin"></i>
+                    </div>
+                    <h4 class="text-sm font-bold text-white mb-1">Memuat Informasi Berita...</h4>
+                    <p class="text-xs text-slate-400">Mohon tunggu sebentar.</p>
                 </div>
             </div>
-            <div class="p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
-                <span>Sumber Resmi: Badan Kepegawaian Negara (bkn.go.id)</span>
-                <button onclick="closeModal('announcements-modal')" class="px-4 py-2 rounded-xl bg-amber-900 text-white font-bold text-xs">Tutup</button>
+            <div class="p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-end text-xs text-stone-500 shrink-0">
+                <button onclick="closeModal('berita-info-modal')" class="px-4 py-2 rounded-xl bg-[#17395f] text-white font-bold text-xs hover:bg-[#24496f] transition">Tutup</button>
             </div>
         </div>
     </div>
@@ -1008,6 +880,21 @@
             frame.src = url;
             placeholder.classList.add('hidden');
         }
+
+        window.reloadBeritaFrame = function() {
+            const frame = document.getElementById('berita-jafung-embed-frame');
+            const placeholder = document.getElementById('berita-jafung-embed-placeholder');
+            if (!frame) return;
+            if (placeholder) {
+                placeholder.classList.remove('hidden');
+                placeholder.classList.add('flex');
+            }
+            const currentSrc = frame.src;
+            frame.src = 'about:blank';
+            setTimeout(() => {
+                frame.src = currentSrc;
+            }, 100);
+        };
 
         window.openModal = function(modalId) {
             const modal = document.getElementById(modalId);
@@ -1124,145 +1011,23 @@
             }
         };
 
-        // Announcements Feed Sample Data
-        const newsItems = [
-            { title: "Jadwal Pengusulan Kenaikan Pangkat Jabatan Fungsional Tahun 2025", date: "23 Oktober 2025", desc: "BKN menyampaikan jadwal resmi periode pengusulan kenaikan pangkat secara elektronik melalui SIASN." },
-            { title: "Bimtek Pengelolaan Kinerja Jabatan Fungsional", date: "20 Oktober 2025", desc: "Pelaksanaan bimbingan teknis konversi predikat kinerja menjadi angka kredit periodik." },
-            { title: "Hasil Seleksi Administrasi Jabatan Fungsional Tahun 2025", date: "14 Oktober 2025", desc: "Pengumuman kelulusan administrasi peserta penyesuaian/inpassing Jabatan Fungsional." }
+        // Render Announcements
+        const announcementsList = [
+            { title: "PermenPANRB No. 1 Tahun 2023", date: "15 Jan 2023", desc: "Tata cara tata kelola Jabatan Fungsional berbasis konversi predikat kinerja." },
+            { title: "Peraturan BKN No. 3 Tahun 2023", date: "20 Mar 2023", desc: "Petunjuk teknis pelaksanaan pembinaan dan pengangkatan Jabatan Fungsional." },
+            { title: "Integrasi Sistem Layanan Kepegawaian", date: "01 Feb 2024", desc: "Digitalisasi dan kemudahan pengajuan usulan berkas Jafung secara online." }
         ];
-
-        // Berita Jafung otomatis dari Google News RSS melalui RSS2JSON.
-        // Feed diperbarui saat halaman dibuka, dapat diperbarui manual, lalu otomatis setiap 30 menit.
-        const JAFUNG_NEWS_CACHE_KEY = 'sadari_jafung_news_cache_v1';
-        const JAFUNG_NEWS_REFRESH_MS = 30 * 60 * 1000;
-        let liveJafungNews = [];
-        let jafungNewsRequestRunning = false;
-
-        function escapeNewsText(value) {
-            return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-        }
-
-        function formatNewsDate(value) {
-            if (!value) return 'Tanggal tidak tersedia';
-            const date = new Date(value);
-            if (Number.isNaN(date.getTime())) return 'Tanggal tidak tersedia';
-            return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
-        }
-
-        function newsSourceName(item) {
-            const source = (item.author || item.source || '').toString().trim();
-            if (source) return source.replace(/^.* - /, '').slice(0, 90);
-            try { return new URL(item.link).hostname.replace(/^www\./, ''); } catch (_) { return 'Sumber berita'; }
-        }
-
-        function renderLiveJafungNews(items, note) {
-            const container = document.getElementById('jafung-news-list');
-            const status = document.getElementById('jafung-news-status');
-            if (!container || !status) return;
-            if (!items || !items.length) {
-                container.innerHTML = `<div class="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-7 text-center"><i class="fa-solid fa-tower-broadcast mb-2 text-2xl text-slate-400"></i><p class="text-xs font-bold text-slate-700">Berita belum dapat dimuat</p><p class="mx-auto mt-1 max-w-xs text-[11px] leading-relaxed text-slate-500">${escapeNewsText(note || 'Periksa koneksi internet, lalu coba perbarui kembali.')}</p><button type="button" onclick="refreshJafungNews(true)" class="mt-3 rounded-lg bg-[#102844] px-3 py-2 text-[11px] font-bold text-white hover:bg-[#1c4770]">Coba lagi</button></div>`;
-                return;
-            }
-            container.innerHTML = items.slice(0, 7).map((item, index) => {
-                const title = escapeNewsText(item.title || 'Berita tanpa judul');
-                const link = /^https?:\/\//i.test(item.link || '') ? item.link : 'https://news.google.com/search?q=jabatan%20fungsional&hl=id&gl=ID&ceid=ID%3Aid';
-                const safeLink = escapeNewsText(link);
-                const source = escapeNewsText(newsSourceName(item));
-                const date = escapeNewsText(formatNewsDate(item.pubDate || item.published || item.date));
-                const category = /regulasi|peraturan|permendagri|permenpan|peraturan bkn/i.test(item.title || '') ? 'Regulasi' : (/guru|kesehatan|dokter|perawat|pendidikan/i.test(item.title || '') ? 'Profesi' : 'Jabatan Fungsional');
-                return `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="group flex gap-3 rounded-xl border border-slate-100 bg-white p-3 transition duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-50/40 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300">
-                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#102844] to-[#2d5b83] text-amber-200 shadow-sm"><i class="${index === 0 ? 'fa-solid fa-bolt' : 'fa-regular fa-newspaper'}"></i></div>
-                    <div class="min-w-0 flex-1">
-                        <div class="mb-1.5 flex flex-wrap items-center gap-1.5"><span class="rounded-md bg-blue-50 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wide text-blue-900">${category}</span><span class="text-[9px] text-slate-400">${date}</span></div>
-                        <h4 class="line-clamp-3 text-xs font-bold leading-relaxed text-slate-800 transition group-hover:text-blue-900">${title}</h4>
-                        <div class="mt-2 flex items-center justify-between gap-2"><span class="truncate text-[10px] font-medium text-slate-500"><i class="fa-regular fa-circle-check mr-1 text-slate-400"></i>${source}</span><i class="fa-solid fa-arrow-up-right-from-square shrink-0 text-[9px] text-slate-300 transition group-hover:text-blue-800"></i></div>
-                    </div>
-                </a>`;
-            }).join('');
-        }
-
-        async function refreshJafungNews(force) {
-            const status = document.getElementById('jafung-news-status');
-            const icon = document.getElementById('jafung-news-refresh-icon');
-            if (jafungNewsRequestRunning) return;
-            try {
-                const cached = JSON.parse(localStorage.getItem(JAFUNG_NEWS_CACHE_KEY) || 'null');
-                if (!force && cached && Array.isArray(cached.items) && cached.savedAt && Date.now() - cached.savedAt < JAFUNG_NEWS_REFRESH_MS) {
-                    liveJafungNews = cached.items;
-                    renderLiveJafungNews(liveJafungNews);
-                    if (status) status.textContent = 'Diperbarui ' + formatNewsDate(cached.savedAt) + ' · cache';
-                    return;
-                }
-            } catch (_) { /* Cache tidak tersedia; lanjutkan mengambil feed. */ }
-
-            jafungNewsRequestRunning = true;
-            if (status) status.textContent = 'Mengambil berita terbaru…';
-            if (icon) icon.classList.add('fa-spin');
-            const query = 'jabatan fungsional OR jabfung OR PermenPANRB jabatan fungsional OR BKN jabatan fungsional';
-            const rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query) + '&hl=id&gl=ID&ceid=ID:id';
-            const endpoint = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
-            const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-            const timeout = controller ? setTimeout(() => controller.abort(), 12000) : null;
-            try {
-                const response = await fetch(endpoint, { cache: 'no-store', signal: controller ? controller.signal : undefined });
-                if (!response.ok) throw new Error('Layanan feed merespons ' + response.status);
-                const payload = await response.json();
-                if (payload.status !== 'ok' || !Array.isArray(payload.items)) throw new Error('Format feed berita tidak tersedia.');
-                const seen = new Set();
-                const items = payload.items.filter(item => item && item.title && item.link && /^https?:\/\//i.test(item.link)).filter(item => {
-                    const key = item.title.trim().toLowerCase();
-                    if (seen.has(key)) return false;
-                    seen.add(key); return true;
-                }).sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0)).slice(0, 7);
-                if (!items.length) throw new Error('Belum ada hasil berita yang sesuai.');
-                liveJafungNews = items;
-                renderLiveJafungNews(items);
-                const stamp = Date.now();
-                if (status) status.textContent = 'Diperbarui ' + new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' }).format(stamp);
-                try { localStorage.setItem(JAFUNG_NEWS_CACHE_KEY, JSON.stringify({ items, savedAt: stamp })); } catch (_) { /* Cache opsional. */ }
-                // Sinkronkan daftar berita pada modal informasi bila tersedia.
-                if (typeof renderAnnouncements === 'function') renderAnnouncements();
-            } catch (error) {
-                try {
-                    const cached = JSON.parse(localStorage.getItem(JAFUNG_NEWS_CACHE_KEY) || 'null');
-                    if (cached && Array.isArray(cached.items) && cached.items.length) {
-                        liveJafungNews = cached.items;
-                        renderLiveJafungNews(liveJafungNews, 'Koneksi sumber berita sedang terganggu; menampilkan hasil terakhir yang tersimpan.');
-                        if (status) status.textContent = 'Menampilkan berita tersimpan';
-                    } else {
-                        renderLiveJafungNews([], 'Koneksi ke layanan berita tidak tersedia saat ini. Coba lagi beberapa saat.');
-                        if (status) status.textContent = 'Sumber berita tidak terhubung';
-                    }
-                } catch (_) {
-                    renderLiveJafungNews([], 'Koneksi ke layanan berita tidak tersedia saat ini. Coba lagi beberapa saat.');
-                    if (status) status.textContent = 'Sumber berita tidak terhubung';
-                }
-            } finally {
-                if (timeout) clearTimeout(timeout);
-                jafungNewsRequestRunning = false;
-                if (icon) icon.classList.remove('fa-spin');
-            }
-        }
-        window.refreshJafungNews = refreshJafungNews;
 
         function renderAnnouncements() {
             const container = document.getElementById('announcements-feed-list');
             if (!container) return;
-            if (Array.isArray(liveJafungNews) && liveJafungNews.length) {
-                container.innerHTML = liveJafungNews.map(item => `
-                    <a href="${escapeNewsText(/^https?:\/\//i.test(item.link || '') ? item.link : '#')}" target="_blank" rel="noopener noreferrer" class="block p-4 rounded-xl border border-slate-200 bg-white hover:bg-blue-50/50 transition">
-                        <span class="text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-0.5 rounded">${escapeNewsText(formatNewsDate(item.pubDate))}</span>
-                        <h4 class="font-bold text-slate-900 text-sm mt-2 mb-1">${escapeNewsText(item.title)}</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">${escapeNewsText(newsSourceName(item))} · Buka berita asli <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
-                    </a>
-                `).join('');
-                return;
-            }
-            container.innerHTML = newsItems.map(item => `
-                <div class="p-4 rounded-xl border border-stone-200 bg-stone-50 hover:bg-amber-50/30 transition">
-                    <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">${escapeNewsText(item.date)}</span>
-                    <h4 class="font-bold text-stone-900 text-sm mt-2 mb-1">${escapeNewsText(item.title)}</h4>
-                    <p class="text-xs text-stone-600 leading-relaxed">${escapeNewsText(item.desc)}</p>
+            container.innerHTML = announcementsList.map(item => `
+                <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-300 transition">
+                    <div class="flex items-center justify-between mb-1">
+                        <h4 class="text-xs font-bold text-stone-900">${item.title}</h4>
+                        <span class="text-[10px] text-amber-800 font-semibold bg-amber-100/60 px-2 py-0.5 rounded-md">${item.date}</span>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">${item.desc}</p>
                 </div>
             `).join('');
         }
@@ -1310,7 +1075,7 @@
         // Global Keyboard Event
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                ['search-modal', 'announcements-modal', 'faq-modal', 'kanal-1-modal', 'kanal-2-modal', 'kanal-3-modal'].forEach(window.closeModal);
+                ['search-modal', 'berita-info-modal', 'faq-modal', 'kanal-1-modal', 'kanal-2-modal', 'kanal-3-modal'].forEach(window.closeModal);
             }
         });
 
@@ -1318,9 +1083,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             initializeDataAsnEmbed();
             renderFAQ();
-            renderAnnouncements();
-            refreshJafungNews(false);
-            window.setInterval(() => refreshJafungNews(false), JAFUNG_NEWS_REFRESH_MS);
         });
     </script>
 </body>
