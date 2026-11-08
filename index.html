@@ -593,7 +593,7 @@
                 </div>
 
                 <!-- Kanal 2 -->
-                <div onclick="openChannelWithUrl('kanal-2-modal', 'frame-2-iframe', 'frame-2-placeholder', 'https://jafungonline-nv.blogspot.com/')" 
+                <div onclick="openChannelWithUrl('kanal-2-modal', 'frame-2-iframe', 'frame-2-placeholder', 'https://jafungonline.bkpsdmkarangasemkab.web.id/')" 
                      class="bg-white rounded-2xl p-4 sm:p-5 text-center card-shadow cursor-pointer group border border-stone-100 flex flex-col items-center justify-between">
                     <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-900 text-white flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-md">
                         <i class="fa-solid fa-users"></i>
@@ -695,6 +695,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- ================= MAIN DASHBOARD (TRIPLE COLUMN SECTION) ================= -->
         <section class="w-full max-w-[98%] mx-auto px-3 sm:px-6 mb-16">
@@ -867,6 +868,38 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ================= STATISTIK KUNJUNGAN WEB ================= -->
+        <section id="statistik-kunjungan" class="w-full max-w-[98%] mx-auto px-3 sm:px-6 mb-10">
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm overflow-hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 border-b border-slate-100 pb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 shrink-0 rounded-xl bg-[#EAF1F8] text-[#17395F] flex items-center justify-center">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg">Statistik Kunjungan Web SADARI JAFUNG</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">Ringkasan kunjungan portal dalam satu tampilan</p>
+                        </div>
+                    </div>
+                    <span class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Statistik portal
+                    </span>
+                </div>
+                <div class="relative w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50" style="height:clamp(360px,55vw,680px);min-height:360px;overscroll-behavior:none">
+                    <iframe
+                        id="statistik-kunjungan-frame"
+                        title="Statistik Kunjungan Web SADARI JAFUNG"
+                        src="https://script.google.com/macros/s/AKfycby68ub0hrzVAXidI-XDHR-dDjIkiqEKjEkmYxwbNrVqxxjUzgU67t_dI-mHWXb--Io/exec"
+                        loading="lazy"
+                        scrolling="no"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        class="absolute inset-0 block w-full h-full border-0 bg-white"
+                    ></iframe>
+                </div>
             </div>
         </section>
 
