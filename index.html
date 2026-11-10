@@ -367,22 +367,39 @@
             }
         }
 
-
-        /* Statistik kunjungan menyatu dengan footer: tanpa kartu, bingkai, atau margin luar */
-        #statistik-kunjungan { scroll-margin-top: calc(var(--sadari-header-height) + 10px); }
-        #statistik-kunjungan iframe { border: 0 !important; outline: 0 !important; }
+        /* Statistik Kunjungan: lebar otomatis + tinggi proporsional layar.
+           Tinggi konten sebenarnya akan mengikuti pesan resize dari halaman Apps Script. */
+        #statistik-kunjungan {
+            scroll-margin-top: calc(var(--sadari-header-height, 82px) + 18px);
+            position: relative;
+            isolation: isolate;
+            width: 100%;
+        }
+        #statistik-kunjungan .statistik-frame-wrap {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            min-height: 0;
+            overflow: visible;
+            background: #fff;
+        }
+        #statistik-kunjungan iframe {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: clamp(620px, 78vh, 820px);
+            min-height: 620px;
+            border: 0;
+            outline: 0;
+            background: #fff;
+        }
         @media (max-width: 640px) {
-            #statistik-kunjungan > div:last-child {
-                height: 860px !important;
-                min-height: 860px !important;
+            #statistik-kunjungan iframe {
+                height: clamp(650px, 82vh, 900px);
+                min-height: 650px;
             }
         }
-        @media (min-width: 641px) and (max-width: 1023px) {
-            #statistik-kunjungan > div:last-child {
-                height: 900px !important;
-                min-height: 900px !important;
-            }
-        }
+        html { scroll-padding-top: calc(var(--sadari-header-height, 82px) + 18px); }
 
     </style>
 </head>
@@ -418,11 +435,14 @@
                 <a href="#berita" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
                     <i class="fa-solid fa-newspaper text-slate-400"></i> Informasi
                 </a>
-                <a href="#kontak-footer" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
+                <a href="#kontak-footer-info" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
                     <i class="fa-solid fa-building-columns text-slate-400"></i> Kontak & Lokasi
                 </a>
                 <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2">
                     <i class="fa-solid fa-circle-question text-slate-400"></i> Bantuan FAQ
+                </a>
+                <a href="#statistik-kunjungan" class="px-3 py-2 rounded-lg hover:text-[#f0d7a3] hover:bg-white/10 transition flex items-center gap-2" title="Lihat statistik kunjungan portal">
+                    <i class="fa-solid fa-chart-line text-[#c8a66b]"></i> Statistik Kunjungan
                 </a>
             </nav>
 
@@ -499,7 +519,7 @@
                 </a>
 
                 <!-- Item 5: Kontak & Lokasi (Footer) -->
-                <a href="#kontak-footer" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                <a href="#kontak-footer-info" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
                     <div class="flex items-center gap-3.5">
                         <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
                             <i class="fa-solid fa-building-columns"></i>
@@ -519,6 +539,18 @@
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
                 </a>
+
+                <!-- Item Statistik Kunjungan -->
+                <a href="#statistik-kunjungan" onclick="closeMobileNav()" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-white bg-[#0e243f] border border-[#c8a66b]/30 hover:border-[#c8a66b]/70 hover:bg-[#143256] active:scale-[0.98] transition shadow-sm">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-lg bg-[#17395f] border border-[#c8a66b]/40 flex items-center justify-center text-[#f0d7a3]">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <span class="font-bold text-slate-100 tracking-wide">Statistik Kunjungan</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-[#c8a66b]/70"></i>
+                </a>
+
 
                 <!-- Mobile Card Footer / Contact Info Banner -->
                 <div class="mt-4 p-4 rounded-xl bg-gradient-to-br from-[#17395f] to-[#0a1d34] border border-[#c8a66b]/50 text-xs text-slate-200 flex items-center justify-between shadow-md">
@@ -564,13 +596,15 @@
                         PORTAL LAYANAN<br/>
                         <span class="text-amber-900">SADARI JAFUNG</span>
                     </h2>
-
+                     <p class="text-amber-100/90 text-xs sm:text-lg font-medium leading-relaxed">
+                     Satu Data, Karier, dan Informasi Jabatan Fungsional
+                    </p>
                     <!-- Decorative Line -->
-                    <div class="w-16 h-1.5 bg-amber-800 rounded-full mb-5"></div>
-
+                    <div class="w-25 h-1.5 bg-amber-800 rounded-full mb-5"></div>
+                                          
                     <!-- Description 1 -->
                     <p class="text-stone-700 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl">
-                        Akses Terpadu untuk Layanan Jafung, Layanan Informasi, serta Petunjuk Teknis Kepegawaian.
+                    Pusat layanan digital terpadu untuk mengakses data, informasi, pengembangan karier, regulasi, dan konsultasi Jabatan Fungsional di lingkungan Pemerintah Kabupaten Karangasem.
                     </p>
                 </div>
             </div>
@@ -586,7 +620,7 @@
                     Kanal Layanan
                 </h3>
                 <p class="text-stone-600 text-xs sm:text-sm font-medium leading-relaxed">
-                    Pilih kanal yang dibutuhkan untuk mengakses layanan karier, data ASN fungsional, informasi, dan petunjuk teknis kepegawaian.
+                    Pilih kanal layanan sesuai kebutuhan yang di inginkan. Klik kanal pilihan untuk mengakses data, layanan karier , informasi, regulasi, dan konsultasi Jabatan Fungsional secara mudah, cepat, dan terpadu.
                 </p>
             </div>
         </section>
@@ -696,13 +730,13 @@
 
                 <div class="relative z-10 max-w-2xl">
                     <span class="text-[11px] font-extrabold uppercase tracking-widest text-amber-200 bg-amber-950/60 px-3 py-1 rounded-md border border-amber-500/30 inline-block mb-2">
-                        Data, kabar, dan regulasi
+                     INFORMASI, BERITA, DAN REGULASI
                     </span>
                     <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">
-                        Informasi dan Berita
+                        Pusat Informasi JF
                     </h3>
                     <p class="text-amber-100/90 text-xs sm:text-sm font-medium leading-relaxed">
-                        Pantau data ASN fungsional, berita terbaru, pengumuman, dan regulasi kepegawaian dalam satu tampilan.
+                        Temukan informasi terkini, berita kegiatan, pengumuman, kebijakan, dan regulasi Jabatan Fungsional untuk mendukung pengelolaan serta pengembangan karier ASN.
                     </p>
                 </div>
 
@@ -894,7 +928,7 @@
     <!-- ================================================================= -->
     <!-- ================= FOOTER ESTETIK & PROFESIONAL ================== -->
     <!-- ================================================================= -->
-    <footer id="kontak-footer" class="bg-[#08172b] text-slate-300 relative overflow-hidden border-t border-[#c8a66b]/30">
+    <footer id="footer-root" class="bg-[#08172b] text-slate-300 relative overflow-hidden border-t border-[#c8a66b]/30">
         <!-- Top Accent Line (Aksen Emas Gradasi Balinese) -->
         <div class="h-1.5 w-full bg-gradient-to-r from-[#ad874b] via-[#e2ca98] to-[#ad874b]"></div>
 
@@ -904,7 +938,7 @@
                 <div class="max-w-[95%] xl:max-w-[88%] mx-auto mb-5 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
                     <div>
                         <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-[.22em] text-[#c8a66b] mb-2">SADARI JAFUNG · ANALITIK PORTAL</p>
-                        <h3 class="font-bold text-white text-lg sm:text-2xl tracking-tight">Statistik Kunjungan </h3>
+                        <h3 class="font-bold text-white text-lg sm:text-2xl tracking-tight">Statistik Kunjungan Web SADARI JAFUNG</h3>
                         <p class="text-xs sm:text-sm text-slate-300 mt-1">Ringkasan kunjungan portal dalam satu tampilan</p>
                     </div>
                     <span class="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-slate-300">
@@ -912,16 +946,17 @@
                     </span>
                 </div>
             </div>
-            <div class="w-full overflow-hidden bg-white" style="height:clamp(720px, 92vh, 1120px);min-height:720px;">
+            <div class="statistik-frame-wrap w-full bg-white">
                 <iframe
                     id="statistik-kunjungan-frame"
                     title="Statistik Kunjungan Web SADARI JAFUNG"
                     src="https://script.google.com/macros/s/AKfycby68ub0hrzVAXidI-XDHR-dDjIkiqEKjEkmYxwbNrVqxxjUzgU67t_dI-mHWXb--Io/exec"
                     loading="lazy"
+                    scrolling="auto"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen
-                    class="block w-full h-full border-0"
-                    style="width:100%;height:100%;display:block;"
+                    class="block w-full border-0"
+                    style="width:100%;max-width:100%;height:clamp(620px, 78vh, 820px);display:block;"
                 ></iframe>
             </div>
         </section>
@@ -994,6 +1029,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="#statistik-kunjungan" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
+                                <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Statistik Kunjungan
+                            </a>
+                        </li>
+                        <li>
                             <a href="javascript:void(0)" onclick="openModal('faq-modal')" class="hover:text-[#e0c58f] transition flex items-center gap-2 group">
                                 <i class="fa-solid fa-angle-right text-[10px] text-slate-600 group-hover:text-[#c8a66b] transition"></i> Pusat Bantuan FAQ
                             </a>
@@ -1031,7 +1071,7 @@
                 </div>
 
                 <!-- Column 4: Kontak & Kantor (Lg: 3 Cols) -->
-                <div class="lg:col-span-3 space-y-3">
+                <div id="kontak-footer-info" class="lg:col-span-3 space-y-3 scroll-mt-24">
                     <h4 class="text-xs font-extrabold uppercase tracking-widest text-[#e0c58f] border-b border-slate-800 pb-2 flex items-center gap-2">
                         <i class="fa-solid fa-building-columns text-xs text-[#c8a66b]"></i> Kontak & Operasional
                     </h4>
@@ -1162,7 +1202,7 @@
                     <input type="text" 
                            id="portal-search-input" 
                            oninput="handleSearchInput()"
-                           placeholder="Cari layanan, PAK, Bezzeting, regulasi, berita, atau FAQ..." 
+                           placeholder="Cari layanan, PAK, Bezzeting, regulasi, berita, statistik kunjungan, atau FAQ..." 
                            class="w-full bg-[#08172b] text-white text-sm sm:text-base placeholder-slate-400 px-4 py-3 rounded-2xl border border-[#c8a66b]/30 focus:outline-none focus:border-[#c8a66b] focus:ring-1 focus:ring-[#c8a66b] transition"
                            autocomplete="off"/>
                     <button id="search-clear-btn" onclick="clearSearchInput()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1">
@@ -1367,6 +1407,9 @@
             { category: 'PAK & Karier', q: 'Bagaimana memahami informasi PAK pada portal?', a: 'PAK adalah Penetapan Angka Kredit. Portal menyediakan akses ke kanal administrasi dan informasi terkait usulan karier. Ikuti instruksi pada layanan tujuan, periksa kesesuaian data kepegawaian dan dokumen pendukung, serta konfirmasikan persyaratan terbaru kepada pengelola kepegawaian apabila terdapat hal yang belum jelas.' },
             { category: 'PAK & Karier', q: 'Bagaimana perhitungan angka kredit Jabatan Fungsional?', a: 'Ketentuan angka kredit mengikuti peraturan yang berlaku untuk masing-masing Jabatan Fungsional dan mekanisme pengelolaan kinerja ASN. Gunakan bagian Regulasi & Kebijakan pada portal untuk menelusuri informasi yang tersedia. Jangan menjadikan ringkasan FAQ sebagai pengganti peraturan resmi atau arahan instansi pembina.' },
             { category: 'Regulasi', q: 'Di mana saya menemukan regulasi dan petunjuk teknis?', a: 'Pilih Kanal 5 – Regulasi & Kebijakan. Baca judul, ruang lingkup, tanggal, dan status keberlakuan dokumen sebelum digunakan. Jika dokumen yang diperlukan belum tersedia atau statusnya meragukan, konfirmasikan kepada BKPSDM atau instansi pembina terkait.' },
+            { category: 'Statistik Kunjungan', q: 'Di mana saya dapat melihat Statistik Kunjungan Web SADARI JAFUNG?', a: 'Statistik Kunjungan tersedia pada bagian bawah portal, tepat di area sebelum navigasi dan informasi footer. Anda juga dapat membukanya melalui menu Statistik Kunjungan pada header atau footer. Bagian ini menampilkan ringkasan aktivitas kunjungan portal dalam satu tampilan.' },
+            { category: 'Statistik Kunjungan', q: 'Informasi apa saja yang ditampilkan pada Statistik Kunjungan?', a: 'Dashboard Statistik Kunjungan menyajikan ringkasan aktivitas pengunjung dan analisis tren kunjungan sesuai data yang tersedia pada sistem. Angka dan grafik mengikuti pembaruan dari sumber data statistik portal.' },
+            { category: 'Statistik Kunjungan', q: 'Mengapa data Statistik Kunjungan belum tampil atau belum diperbarui?', a: 'Pastikan koneksi internet stabil dan tunggu proses pemuatan dashboard selesai. Jika data tetap belum tampil, muat ulang halaman portal. Statistik dimuat dari layanan eksternal sehingga ketersediaannya dapat dipengaruhi koneksi atau pembaruan pada layanan sumber.' },
             { category: 'Informasi', q: 'Bagaimana membaca berita dan informasi terbaru?', a: 'Bagian Berita & Informasi berada di sisi kanan dashboard halaman utama. Tunggu hingga konten selesai dimuat. Gunakan tombol muat ulang pada bagian tersebut jika tampilan tidak diperbarui, kemudian periksa sumber dan tanggal informasi.' },
             { category: 'Teknis', q: 'Mengapa dashboard atau kanal layanan tidak tampil?', a: 'Pastikan koneksi internet stabil, tunggu beberapa saat, lalu muat ulang halaman. Jika tetap bermasalah, coba buka portal melalui peramban terbaru atau perangkat lain. Sebagian layanan berasal dari sistem eksternal sehingga ketersediaannya dapat berbeda dari halaman utama portal.' },
             { category: 'Teknis', q: 'Apa yang harus dilakukan jika tautan layanan tidak bisa dibuka?', a: 'Buka kembali kanal yang dituju dan periksa apakah halaman eksternal dapat diakses. Jika masih gagal, catat nama kanal, waktu kejadian, dan pesan kesalahan yang terlihat, lalu sampaikan informasi tersebut kepada pengelola portal atau petugas kepegawaian agar dapat ditindaklanjuti.' },
@@ -1442,12 +1485,20 @@
                 action: () => { closeModal('search-modal'); scrollToSection('berita'); }
             },
             {
+                id: 'statistik-kunjungan-sec',
+                title: 'Statistik Kunjungan Web SADARI JAFUNG',
+                desc: 'Dashboard statistik kunjungan portal, ringkasan aktivitas pengunjung, jumlah kunjungan, serta analisis dan tren kunjungan. Akses melalui menu Statistik Kunjungan.',
+                category: 'informasi',
+                icon: 'fa-chart-line',
+                action: () => { closeModal('search-modal'); scrollToSection('statistik-kunjungan'); }
+            },
+            {
                 id: 'kontak-sec',
                 title: 'Kontak & Lokasi Kantor BKPSDM Karangasem',
                 desc: 'Alamat resmi Jl. Untung Surapati Amlapura, jam operasional, serta saluran layanan komunikasi.',
                 category: 'informasi',
                 icon: 'fa-building-columns',
-                action: () => { closeModal('search-modal'); scrollToSection('kontak-footer'); }
+                action: () => { closeModal('search-modal'); scrollToSection('kontak-footer-info'); }
             },
             // FAQ entries as searchable
             {
@@ -1700,5 +1751,45 @@
             renderFAQ();
         });
     </script>
+
+    <script>
+    /* Auto-resize statistik:
+       - Lebar iframe mengikuti lebar portal secara otomatis.
+       - Tinggi awal proporsional terhadap layar agar tidak terlalu tinggi.
+       - Tinggi konten sesungguhnya diterapkan bila Apps Script mengirim postMessage
+         bertipe 'sadari-statistik-resize' beserta properti height. */
+    (function () {
+        const frame = document.getElementById('statistik-kunjungan-frame');
+        if (!frame) return;
+
+        function setFallbackHeight() {
+            if (frame.dataset.externalResize === 'true') return;
+            const mobile = window.matchMedia('(max-width: 640px)').matches;
+            const height = mobile
+                ? Math.max(650, Math.min(900, Math.round(window.innerHeight * 0.82)))
+                : Math.max(620, Math.min(820, Math.round(window.innerHeight * 0.78)));
+            frame.style.height = height + 'px';
+            frame.style.width = '100%';
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.source !== frame.contentWindow) return;
+            const data = event.data;
+            if (!data || data.type !== 'sadari-statistik-resize') return;
+
+            const height = Number(data.height);
+            if (!Number.isFinite(height) || height < 300) return;
+
+            const safeHeight = Math.min(4000, Math.max(500, Math.ceil(height)));
+            frame.dataset.externalResize = 'true';
+            frame.style.height = safeHeight + 'px';
+            frame.style.width = '100%';
+        });
+
+        window.addEventListener('resize', setFallbackHeight, { passive: true });
+        setFallbackHeight();
+    })();
+    </script>
+
 </body>
 </html>
